@@ -1,8 +1,12 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+.bkImage{
+  width: 100%;
+  height: 100%;
+  background-image: url('../images/bg_home.png');
+  background-position: center;
 }
-
-a {
-  color: #00B7FF;
+.bg-project{
+  background-color: #E5E5E5;
+}
+body, html{
+  height: 100%;
 }

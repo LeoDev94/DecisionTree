@@ -1,0 +1,51 @@
+extends layout.pug
+
+
+block primary
+
+    each item in db_groups
+        div.modal.fade(id="modal_" + item.index,tabindex="-1",role="dialog",aria-labelledby="modalTitle_" + item.index,aria-hidden="true")
+            div.modal-dialog.modal-dialog-centered.modal-lg(role="document")
+                div.modal-content
+                    div.modal-header
+                        h5.modal-title(id="modalTitle_" + item.index) #{item.db_group}
+                        button.close(data-dismiss="modal",aria-label="Close")
+                            span(aria-hidden="true") &times;
+                    div.modal-body
+                        div.container-fluid
+                            div.row
+                                div.col-md-3
+                                    - var imgUri = item.imgUri;
+                                    img.img-fluid(src = '/' + imgUri).py-2
+                                div.col-md-8
+                                    each db in item.db_array
+                                        div.row
+                                            div.col-md-10.my-2
+                                                h3 #{db.name}
+                                                p #{db.info}
+                                                a(href=db.site) Más Información
+                                            div.col-md-2
+                                                h3 Precio
+                                                h4 #{db.price}
+                    div.modal-footer
+                        button.btn.btn-secondary(data-dismiss="modal") Close
+
+    div.container-fluid.my-lg-5
+        div.row.my-4
+            div.col
+                h3 Recomendación General
+        div.row.my-4
+            div.col
+                h4 Propuestas de Bases de Datos
+        div.row.my-lg-5
+            div.col
+                div.card-group
+                    each item in db_groups
+                        div.col-md-2
+                            div.card.shadow.rounded.border.px-2
+                                - var imgUri = item.imgUri;
+                                img.imgCard.img-fluid(src = '/' + imgUri).py-2
+                                div.card-body
+                                    h5.titleCard.card-title #{item.db_group}
+                                    div.row.my-2
+                                        button.btn-.btn-danger.mx-auto(data-toggle="modal",data-target="#modal_"+item.index) Más Información

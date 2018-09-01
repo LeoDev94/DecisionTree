@@ -1,7 +1,22 @@
 doctype html
 html
   head
-    title= title
+    meta(charset='UTF-8')
+    title Arbol de Decision
+    script(src='/javascripts/jquery-3.3.1.js')
+    script(src='/javascripts/popper.min.js')
+    link(rel='stylesheet', href='/stylesheets/normalize.css')
+    link(rel='stylesheet', href='/stylesheets/bootstrap.min.css')
     link(rel='stylesheet', href='/stylesheets/style.css')
-  body
+
+    script(src='/javascripts/prices.js')
+    script(src='/javascripts/bootstrap.min.js')
+    script(src='/javascripts/questioModel.js')
+    script(src='/javascripts/main.js')
+  body.bg-project
     block content
+
+      block sidebar
+        nav.navbar.navbar-light.bg-danger
+          a.recargar.navbar-brand(href='/') Regresar al Inicio
+      block primary

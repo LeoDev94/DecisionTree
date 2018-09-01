@@ -1,5 +1,5 @@
 
-var dbConfig = {
+const dbConfig = {
   "apikey": "wxYEvRijZPQfModtNjbxnfna8pTDwt_Sm_tS7aov3nZp",
   "host": "1647891a-d405-4dd5-9f03-f822caebac2c-bluemix.cloudant.com",
   "iam_apikey_description": "Auto generated apikey during resource-key operation for Instance - crn:v1:bluemix:public:cloudantnosqldb:us-south:a/ae35b4fafc8aaf2cedf1f57604642d25:eed40a29-efb8-4306-9370-7dfe3701d6a9::",
@@ -17,24 +17,24 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+/*
 var Cloudant = require('@cloudant/cloudant');
 var cloudant = Cloudant(dbConfig);
 var dbname = 'arbol';
-var db = null;
+var db = cloudant.db.use(dbname);
+cloudant.db.list(function(err, allDbs) {
+  if(err){
+      console.log("Connection Error");
+  }else{
+      console.log("Connection Successful");
+  }
 
-var createDatabase = function(callback) {
-    console.log("Creating database '" + dbname + "'");
-    cloudant.db.create(dbname, function(err, data) {
-        console.log('Error:', err);
-        console.log('Data:', data);
-        db = cloudant.db.use(dbname);
-        callback(err, data);
-    });
-};
+});*/
 
 var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
-var coolRouter = require('./routes/cool');
+var resultsRouter = require('./routes/results');
+var saveRouter = require('./routes/savePath');
+var questionsRouter = require('./routes/questions');
 
 var app = express();
 
@@ -49,8 +49,9 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
-app.use('/users/cool', coolRouter);
+app.use('/results', resultsRouter);
+app.use('/savePath', saveRouter);
+app.use('/questions',questionsRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
