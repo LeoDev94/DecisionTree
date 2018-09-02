@@ -24,78 +24,89 @@ const db_sites={
 };
 
 const db_info = {
-    "Oracle": "Oracle database (Oracle DB) is a relational database management system (RDBMS) from the Oracle" +
-                " Corporation. Originally developed in 1977 by Lawrence Ellison and other developers, Oracle DB is one" +
-                " of the most trusted and widely-used relational database engines.",
-    "Microsoft SQL Server": "Microsoft SQL Server is a relational database management system, or RDBMS, that supports" +
-                            " a wide variety of transaction processing, business intelligence and analytics " +
-                            "applications in corporate IT environments. It's one of the three market-leading" +
-                            " database technologies.",
-    "MySQL": "MySQL Enterprise Edition includes the most comprehensive set of advanced features, management tools and" +
-                " technical support to achieve the highest levels of MySQL scalability, security, reliability," +
-                " and uptime. It reduces the risk, cost, and complexity in developing, deploying, and managing" +
-                " business-critical MySQL applications.",
-    "Oracle In Memory": "Oracle Database In-Memory provides a unique dual-format architecture that enables" +
-                        " tables to be simultaneously represented in memory using traditional row format and a" +
-                        " new in-memory column format. The Oracle SQL Optimizer automatically routes analytic" +
-                        " queries to the column format and OLTP queries to the row format, transparently delivering" +
-                        " best-of-both-worlds performance.",
-    "VoltDB": "VoltDB uses SQL, ACID transactions and a relational model. These proven database fundamentals " +
-                "let developers leverage what they know. Combine context, real-time analytics and strong consistency" +
-                " to provide the most sophisticated decisions in milliseconds.",
+    "Oracle": "La base de datos Oracle (Oracle DB) es un sistema de administración de bases de datos relacionales (RDBMS) de Oracle "+
+                "Corporation. Originalmente desarrollado en 1977 por Lawrence Ellison y otros desarrolladores, Oracle DB es uno" +
+                "de los motores de base de datos relacionales más confiables y ampliamente utilizados.",
+    "Microsoft SQL Server": "Microsoft SQL Server es un sistema de administración de bases de datos relacionales, o RDBMS, que admite" +
+                            "una amplia variedad de procesamiento de transacciones, inteligencia empresarial y análisis" +
+                            "de aplicaciones en entornos de TI corporativos. Es uno de los tres líderes del mercado" +
+                            " de tecnologías de bases de datos.",
+    "MySQL": "MySQL Enterprise Edition incluye el conjunto más completo de funciones avanzadas, herramientas de administración y" +
+                "soporte técnico para alcanzar los niveles más altos de escalabilidad, seguridad , confiabilidad y tiempo de actividad de MySQL." +
+                " Reduce el riesgo, el costo y la complejidad en el desarrollo, la implementación y la administración de" +
+                "aplicaciones MySQL críticas para el negocio",
+    "Oracle In Memory": "Oracle Database In-Memory brinda una arquitectura única de formato dual que permite" +
+                        "tablas que se representarán simultáneamente en la memoria utilizando el formato de fila tradicional y un" +
+                        "nuevo formato de columna en memoria. Oracle SQL Optimizer automáticamente enruta analítica" +
+                        "consultas al formato de columna y consultas OLTP al formato de fila, entregando de forma transparente" +
+                        "rendimiento del mejor de los dos mundos",
+    "VoltDB": "VoltDB usa SQL, transacciones ACID y un modelo relacional. Estos fundamentos de base de datos probados" +
+                "permiten que los desarrolladores aprovechen lo que saben. Combine el contexto, el análisis " +
+                "en tiempo real y la sólida coherencia"+
+                "para proporcionar las decisiones más sofisticadas en milisegundos",
     "SAP Hana": "HANA DB se aprovecha del bajo coste de la memoria principal (RAM), la capacidad del procesamiento" +
                 " de datos de los procesadores multinúcleo y el acceso rápido a datos de unidades de estado sólido" +
                 " con respecto a los discos duros tradicionales para ofrecer un mejor rendimiento de las aplicaciones" +
                 " analíticas y transaccionales.",
-    "MongoDB": "Hundreds of organizations around the world use our commercial edition of the database, called MongoDB" +
-                " Enterprise Server, from Fortune 100 enterprises to the most agile startups.",
-    "CouchDB": "Apache CouchDB lets you access your data where you need it. The Couch Replication Protocol" +
-                " is implemented in a variety of projects and products that span every imaginable computing" +
-                " environment from globally distributed server-clusters, over mobile phones to web browsers.",
-    "CouchBase": "Built with the most powerful NoSQL technology, the Couchbase Data Platform was architected" +
-                    " on top of an open source foundation for the massively interactive enterprise. " +
-                    "Our geo-distributed Engagement Database provides unmatched developer agility and manageability," +
-                    " as well as unparalleled performance at any scale, from any cloud to the edge.",
-    "HBase": "Use Apache HBase when you need random, realtime read/write access to your Big Data." +
-                " This project's goal is the hosting of very large tables -- billions of rows X millions of columns" +
-                " -- atop clusters of commodity hardware.",
-    "Cassandra": "The Apache Cassandra database is the right choice when you need scalability and high availability" +
-                    " without compromising performance. Linear scalability and proven fault-tolerance on commodity" +
-                    " hardware or cloud infrastructure make it the perfect platform for mission-critical data." +
-                    " Cassandra's support for replicating across multiple datacenters is best-in-class, providing" +
-                    " lower latency for your users and the peace of mind of knowing that you can survive regional outages.",
-    "MonetDB": "MonetDB innovates at all layers of a DBMS, e.g. a storage model based on vertical fragmentation," +
-                " a modern CPU-tuned query execution architecture, automatic and self-tuning indexes, run-time query" +
-                " optimization, and a modular software architecture.",
-    "MariaDB Column Store": "MariaDB ColumnStore is designed for big data scaling to process petabytes of data," +
-                            " linear scalability and exceptional performance with real-time response to analytics" +
-                            " queries. It leverages the I/O benefits of columnar storage, compression," +
-                            " just-in-time projection, and horizontal and vertical partitioning to deliver" +
-                            " tremendous performance when analyzing large data sets.",
-    "Neo4j": "Neo4j’s Graph Platform is specifically optimized to map, analyze, store and traverse networks of" +
-                " connected data to reveal invisible contexts and hidden relationships. By intuitively mapping data" +
-                " points and the connections between them, Neo4j powers intelligent, real-time applications that" +
-                " tackle today's toughest enterprise challenges",
-    "Datasax Enterprise GraphDB": "DSE Graph is an add-on to DSE that enables enterprises to identify and analyze" +
-                                    " hidden relationships between connected data to build powerful applications " +
-                                    "for fraud detection, customer 360, social networks, and real-time recommendations.",
-    "OrientDB": "OrientDB allows organizations to unlock the true power of graph databases without having to deploy" +
-                " multiple systems to handle other data types, which increases performance and security while" +
-                " supporting scalability.",
-    "Redis": "Redis is an open source (BSD licensed), in-memory data structure store, used as a database," +
-                " cache and message broker. It supports data structures such as strings, hashes, lists, sets, " +
-                "sorted sets with range queries, bitmaps, hyperloglogs and geospatial indexes with radius queries." +
-                " Redis has built-in replication, Lua scripting, LRU eviction, transactions and different levels of" +
-                " on-disk persistence, and provides high availability via Redis Sentinel and automatic" +
-                " partitioning with Redis Cluster.",
-    "Memcached": "Memcached is an in-memory key-value store for small chunks of arbitrary data (strings, objects) " +
-                    "from results of database calls, API calls, or page rendering." +
-                    "Memcached is simple yet powerful. Its simple design promotes quick deployment, ease" +
-                    " of development, and solves many problems facing large data caches.",
-    "Hazelcast": "Hazelcast Jet® is the 3rd Generation Big Data Processing Engine. It is an application embeddable," +
-                    " distributed computing platform for fast processing of big data sets. The Hazelcast Jet" +
-                    " architecture is high performance and low latency driven, based on a parallel, streaming" +
-                    " core engine which enables data-intensive applications to operate at near real-time speeds.",
+    "MongoDB": "Cientos de organizaciones en todo el mundo usan nuestra edición comercial de la base de datos, llamada MongoDB" +
+                "Enterprise Server, de las empresas Fortune 100 a las startups más ágiles",
+    "CouchDB": "Apache CouchDB te permite acceder a tus datos donde los necesites. El Couch Replication Protocol" +
+                "se implementa en una variedad de proyectos y productos que abarcan todos los entornos" +
+                " informáticos imaginables, desde clusters de servidores distribuidos globalmente," +
+                " pasando por teléfonos móviles hasta navegadores web",
+    "CouchBase": "Construida con la tecnología NoSQL más potente, la plataforma de datos Couchbase se diseñó" +
+                    " sobre una base de código abierto para la empresa masivamente interactiva." +
+                    "Nuestra base de datos de interacción distribuida geográficamente brinda una agilidad y manejabilidad del desarrollador sin igual, "+
+                    "así como un rendimiento incomparable a cualquier escala, desde cualquier nube hasta el borde",
+    "HBase": "Use Apache HBase cuando necesite acceso aleatorio, en tiempo real, de lectura / escritura a su Big Data." +
+                "El objetivo de este proyecto es el alojamiento de tablas muy grandes: miles de millones de filas X millones de columnas" +
+                "- sobre cúmulos de hardware básico",
+    "Cassandra": "La base de datos Apache Cassandra es la elección correcta cuando se necesita escalabilidad y alta disponibilidad" +
+                    "sin comprometer el rendimiento. Escalabilidad lineal y probada tolerancia a fallas en los productos básicos" +
+                    "la infraestructura de hardware o en la nube lo convierten en la plataforma perfecta para datos de misión crítica." +
+                    "El soporte de Cassandra para replicar en múltiples centros de datos es el mejor en su clase, proporcionando" +
+                    "menor latencia para sus usuarios y la tranquilidad de saber que puede sobrevivir interrupciones regionales",
+    "MonetDB": "MonetDB innova en todas las capas de un DBMS, por ejemplo, un modelo de almacenamiento basado" +
+                " en la fragmentación vertical," +
+                "una arquitectura moderna de ejecución de consultas ajustada a la CPU, " +
+                "índices automáticos y autoajustables, optimización de consultas en tiempo de ejecución " +
+                "y una arquitectura de software modular.",
+    "MariaDB Column Store": "MariaDB ColumnStore está diseñado para escala de big data para procesar petabytes de datos," +
+                            "escalabilidad lineal y rendimiento excepcional con respuesta en tiempo real " +
+                            "a las consultas analíticas. Aprovecha los beneficios de I/O del almacenamiento en" +
+                            " columnas, la compresión," +
+                            "proyección justo a tiempo y particionamiento horizontal y vertical para" +
+                            " ofrecer un rendimiento tremendo al analizar grandes conjuntos de datos.",
+    "Neo4j": "La plataforma de gráficos de Neo4j está específicamente optimizada para mapear, analizar," +
+                " almacenar y recorrer redes de" +
+                "datos conectados para revelar contextos invisibles y relaciones ocultas. Al mapear" +
+                " de manera intuitiva los puntos de datos y las conexiones entre ellos, " +
+                "Neo4j alimenta aplicaciones inteligentes en tiempo real que abordan" +
+                " los retos empresariales más difíciles de la actualidad",
+    "Datasax Enterprise GraphDB": "DSE Graph es un complemento de DSE que permite a las empresas identificar y analizar "+
+                                    "relaciones ocultas entre datos conectados para crear aplicaciones potentes" +
+                                    "para detección de fraude, cliente 360, redes sociales y recomendaciones en tiempo real",
+    "OrientDB": "OrientDB permite a las organizaciones desbloquear el verdadero poder de las bases de" +
+                " datos de gráficos sin tener que implementar" +
+                "múltiples sistemas para manejar otros tipos de datos, lo que aumenta" +
+                " el rendimiento y la seguridad a la vez que admite la escalabilidad",
+    "Redis":
+        "Redis es una tienda de estructura de datos en memoria de código abierto (con licencia de BSD), que se utiliza como base de datos," +
+        "caché y agente de mensajes. Es compatible con estructuras de datos como cadenas, hashes, listas, conjuntos," +
+        "conjuntos ordenados con consultas de rango, mapas de bits, hiperlogálogos e índices geoespaciales con consultas de radio." +
+        "Redis tiene una replicación incorporada, secuencias de comandos Lua, desalojo LRU, transacciones y diferentes niveles de" +
+        "persistencia en disco, y proporciona alta disponibilidad a través de Redis Sentinel y particiones automáticas con Redis Cluster.",
+
+    "Memcached":
+        "Memcached es un almacén de clave-valor en memoria para pequeños fragmentos de datos arbitrarios (cadenas, objetos)" +
+        "a partir de los resultados de las llamadas a la base de datos, las llamadas API o la representación de páginas." +
+        "Memcached es simple pero potente. Su diseño simple promueve la implementación rápida," +
+        " la facilidad de desarrollo y resuelve muchos problemas que enfrentan los grandes cachés de datos.",
+    "Hazelcast": "Hazelcast Jet® es el motor de procesamiento de Big Data de 3ra generación. Es una aplicación incrustable,"+
+                    "plataforma de computación distribuida para el procesamiento rápido de grandes conjuntos de datos. " +
+                    "La arquitectura Hazelcast Jet es de alto rendimiento y baja latencia, basada" +
+                    " en un motor paralelo de transmisión en paralelo que permite que las aplicaciones" +
+                    " de datos intensivos operen a velocidades cercanas al real.",
 };
 const db_prices = {
     "Oracle": 546.40,

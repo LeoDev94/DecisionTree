@@ -18,6 +18,7 @@ block primary
                                     - var imgUri = item.imgUri;
                                     img.img-fluid(src = '/' + imgUri).py-2
                                 div.col-md-8
+                                    div.row.bg-dark(style={height:"2px"})
                                     each db in item.db_array
                                         div.row
                                             div.col-md-10.my-2
@@ -27,6 +28,7 @@ block primary
                                             div.col-md-2
                                                 h3 Precio
                                                 h4 #{db.price}
+                                        div.row.bg-dark(style={height:"2px"})
                     div.modal-footer
                         button.btn.btn-secondary(data-dismiss="modal") Close
 
