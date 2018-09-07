@@ -126,3 +126,5 @@ const db_prices = {
     "Memcached": 148.24,
     "Hazelcast": 219.52
 };
+
+module.exports = {db_sites,db_info,db_prices};

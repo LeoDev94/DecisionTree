@@ -5,25 +5,25 @@ class Question_List{
         this._array = [];
         this._path = [];
     }
+    Cut_List(index){
+        this._path.splice(index*1+1);
+        this._array.splice(index*1+1);
+    }
     Add_Node(question,answer){
         let size = this._array.length;
         let question_node = {};
 
         if(size === 0){
             question_node = new Question_Node(null,question,answer);
-            this._path=[{
-                index: size,
-                question: question_node.question,
-                answer: question_node.answer,
-            }];
-        }else{
-            question_node = new Question_Node(this._array[size-1],question,answer);
-            this._path.push({
+        }else {
+            question_node = new Question_Node(this._array[size - 1], question, answer);
+        }
+        this._path.push({
                 index: size,
                 question: question_node.question,
                 answer: question_node.answer,
             });
-        }
+
         this._array.push(question_node);
     }
     List_Size(){
@@ -34,4 +34,4 @@ class Question_List{
     }
 }
 
-module.exports('question_list',Question_List)
+module.exports = new Question_List();

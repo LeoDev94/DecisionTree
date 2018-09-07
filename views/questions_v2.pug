@@ -1,0 +1,35 @@
+extends layout.pug
+
+
+block primary
+    div.card.w-75.mx-auto.shadow-sm.py-0.mt-5.mb-5.rounded
+        h3#numPregunta.card-header.ml-3.mb-2.shadow-lg.rounded.pb-4.pt-4(style='margin-top: -20px;background: linear-gradient(60deg,#ef5350,#d32f2f)') Pregunta
+        div.card-body
+            div#carouselExampleIndicators.carousel.slide(style='margin-bottom: -30px;padding-bottom: 30px', data-interval='false', data-wrap='false', data-ride='carousel')
+                ol.carousel-indicators
+                    each node in node_path
+                        li.indicador(data-target='#carouselExampleIndicators', data-slide-to=#{node.index})
+                div.carousel-inner
+                    - var size = node_path.length;
+                    each node,ind in node_path
+                        - if(ind === size-1){
+                        div.carousel-item.active.w-100
+                        - } else {
+                        div.carousel-item.w-100
+                        -}
+                            div.mx-auto.w-75.my-5
+                                h2.titulo_pregunta1.text-center.card-title.mb-4 Pregunta texto
+                                div#options.mx-auto.text-center.row
+                                    div.col-md
+                                        button#1.opciones.mx-3.opcion1.btn-danger.btn-lg.opcion-select(type='button') OPC1
+                                    div.col-md
+                                        button#2.opciones.mx-3.opcion2.btn-danger.btn-lg.opcion-select(type='button') OPC2
+                                    if (ind === 0)
+                                        div.col-md
+                                            button#third.opciones.opcionextra.mx-3.btn-danger.btn-lg.opcion-select(type='button') OPC2
+                a#c_previous.carousel-control-prev(href='#carouselExampleIndicators', role='button', data-slide='prev')
+                    span.carousel-control-prev-icon(aria-hidden='true')
+                    span.sr-only Previous
+                a#c_next.carousel-control-next(href='#carouselExampleIndicators', role='button', data-slide='next')
+                    span.carousel-control-next-icon(aria-hidden='true')
+                    span.sr-only Next

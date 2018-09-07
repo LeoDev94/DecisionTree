@@ -8,11 +8,11 @@ const index_text = {
                 " finalidad un escenario. En cada escenario puede existir una categoría de base de datos" +
                 " o más que están acorde a sus necesidades y con ello comparar los criterios de selección que" +
                 " usted tomó  con los de la presente aplicación.",
-    example:     "Usted utilizo una base de datos relacional SQL para registrar las ventas de una empresa." +
-    " Ahora  usted simulara la herramienta teniendo en consideración dicho escenario de registro" +
+    example:     "Usted utilizó una base de datos relacional SQL para registrar las ventas de una empresa." +
+    " Ahora  usted simulará la herramienta teniendo en consideración dicho escenario de registro" +
     " de ventas y obtendrá una categoría o varias de base de datos. Finalmente, si la  categoría" +
-    " de base de datos que utilizo en dicho escenario (SQL)  pertenece a una de las categorías" +
-    " arrojadas como SQL y SQL in Memory, marcara SI en la pregunta final de herramienta de lo contrario NO.",
+    " de base de datos que utilizó en dicho escenario (SQL)  pertenece a una de las categorías" +
+    " arrojadas como SQL y SQL in Memory, marcara SÍ en la pregunta final de herramienta de lo contrario NO.",
 };
 
 module.exports = {index_text};
