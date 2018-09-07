@@ -10,12 +10,15 @@ block primary
                     li.indicador(data-target='#carouselExampleIndicators', data-slide-to='0')
                 div.carousel-inner
                     div.carousel-item.active.w-100
-                        div.mx-auto.w-50.my-5
+                        div.mx-auto.w-75.my-5
                             h2.titulo_pregunta1.text-center.card-title.mb-4 Pregunta texto
-                            div#options.mx-auto.text-center
-                                button#1.opciones.mx-3.opcion1.btn-danger.btn-lg.opcion-select(type='button') OPC1
-                                button#2.opciones.mx-3.opcion2.btn-danger.btn-lg.opcion-select(type='button') OPC2
-                                button#third.opciones.opcionextra.mx-3.btn-danger.btn-lg.opcion-select(type='button') OPC2
+                            div#options.mx-auto.text-center.row
+                                div.col-md
+                                    button#1.opciones.mx-3.opcion1.btn-danger.btn-lg.opcion-select(type='button') OPC1
+                                div.col-md
+                                    button#2.opciones.mx-3.opcion2.btn-danger.btn-lg.opcion-select(type='button') OPC2
+                                div.col-md
+                                    button#third.opciones.opcionextra.mx-3.btn-danger.btn-lg.opcion-select(type='button') OPC2
                 a#c_previous.carousel-control-prev(href='#carouselExampleIndicators', role='button', data-slide='prev')
                     span.carousel-control-prev-icon(aria-hidden='true')
                     span.sr-only Previous

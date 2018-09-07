@@ -2,10 +2,13 @@ $(document).ready(function(){
     var path = [];
     var index=0;
     var finished=false;
+
     $('#numPregunta').html(`Pregunta ${index+1}`);
     path.push(new Tree_Node());
     path[path.length-1].Ask();
 
+    let btn_size=$('.opcionextra').height();
+    $('.opciones').height(btn_size);
     $('.recargar').click(function () {
         location.reload();
     });
@@ -79,15 +82,12 @@ $(document).ready(function(){
         createCard(index);
         finished = path[path.length-1].Ask();
         console.log(path);
-
     });
-    $('body').on('click','button.btn-no',function (e) {
-        if(e.target.id==="button-no"){
-            $('#sendData').val(JSON.stringify(path));
-            console.log(path);
-            $('#pathData').submit();
-        }
-
+    $('body').on('click','button.btn-final',function (e) {
+        $('#sendData').val(JSON.stringify(path));
+        $('#opc_db').val(this.id);
+        console.log(path);
+        $('#pathData').submit();
     })
 
 });

@@ -34,7 +34,7 @@ router.post('/',function(req,res){
     (db.list(function(err,body){
         if(!err){
             body.rows.forEach(function (doc) {
-                console.log(doc.value);
+                console.log(doc);
             })
             /*obj.path = req.body;
             obj._id = (body.total_rows*1+1).toString();

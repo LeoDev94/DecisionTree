@@ -17,17 +17,20 @@ block primary
                                 div.col-md-3
                                     - var imgUri = item.imgUri;
                                     img.img-fluid(src = '/' + imgUri).py-2
-                                div.col-md-8
+                                div.col-md-9
                                     div.row.bg-dark(style={height:"2px"})
                                     each db in item.db_array
                                         div.row
-                                            div.col-md-10.my-2
+                                            div.col-md-9.my-2
                                                 h3 #{db.name}
                                                 p #{db.info}
                                                 a(href=db.site) Más Información
-                                            div.col-md-2
-                                                h3 Precio
-                                                h4 #{db.price}
+                                            div.col-md-3
+                                                h5 Precio por mes
+                                                if (db.price==='Personalizado')
+                                                    h5 #{db.price}
+                                                else
+                                                    h5 #{db.price} Dólares
                                         div.row.bg-dark(style={height:"2px"})
                     div.modal-footer
                         button.btn.btn-secondary(data-dismiss="modal") Close

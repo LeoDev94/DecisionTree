@@ -1,15 +1,28 @@
 extends layout.pug
 
 block content
+  div.modal.fade(id="modal_example",tabindex="-1",role="dialog",aria-labelledby="modalTitle_example",aria-hidden="true")
+    div.modal-dialog.modal-dialog-centered.modal-lg(role="document")
+      div.modal-content
+        div.modal-header
+          h5.modal-title(id="modalTitle_example") Ejemplo de Uso
+          button.close(data-dismiss="modal",aria-label="Close")
+            span(aria-hidden="true") &times;
+        div.modal-body
+          h4 #{text.example}
+        div.modal-footer
+          button.btn.btn-secondary(data-dismiss="modal") Close
   nav.navbar.navbar-light.bg-danger.fixed-top
     a.recargar.navbar-brand(href='/') Regresar al Inicio
   div.bkImage.mx-0.pt-5
     div.container
       div.row.pt-5
         div.pt-5.my-2
-          h1.text-center.text-white ¡Bienvenidos a la herramienta de recomendaciones de que base de datos utilizar!
+          h1.text-center.text-white #{text.welcome}
           h3.text-center.text-white.
-            El objetivo de la herramienta es evaluar que motor de base de datos se recomienda utilizar en un escenario específico
-        div.row.mx-auto.my-3
-          a.btn.btn-danger.btn-lg(href="/questions") Empezar
+            #{text.objective}
+      div.row.mx-auto
+        button.btn.btn-secondary.btn-sm.mx-auto(data-toggle="modal",data-target="#modal_example") Ejemplo
+      div.row.mx-auto.my-3
+        a.btn.btn-danger.btn-lg.mx-auto(href="/questions") Empezar
 
