@@ -10,7 +10,7 @@ html
     link(rel='stylesheet', href='/stylesheets/style.css')
 
     script(src='/javascripts/prices.js')
-    script(src='/javascripts/bootstrap.min.js')
+    script(src='/javascripts/bootstrap.js')
     script(src='/javascripts/questioModel.js')
     script(src='/javascripts/main.js')
   body.bg-project
@@ -18,5 +18,6 @@ html
 
       block sidebar
         nav.navbar.navbar-light.bg-danger
-          a.recargar.navbar-brand(href='/') Regresar al Inicio
+          a.recargar.navbar-brand(href='/')
+            h2.text-primary Regresar al Inicio
       block primary

@@ -23,18 +23,18 @@ const questions = {
     },
     "Encontrar patrones o relaciones de comportamiento?":{
         "Sí":"",
-        "No":"Qué tipo de consulta se realizará mas?",
+        "No":"Qué tipo de consulta se realizará más?",
     },
-    "Manejarás mas del millón de registros?":{
+    "Manejarás más del millón de registros?":{
         "Sí":"",
         "No":"",
     },
-    "Qué tipo de consulta se realizará mas?":{
+    "Qué tipo de consulta se realizará más?":{
         "Usaré todos los campos":"Necesidad de manejar información en tiempo real?",
         "Usaré campos especificos":"Necesidad de manejar información en tiempo real?",
     },
     "Necesidad de manejar información en tiempo real?":{
-        "Si":"",
+        "Sí":"",
         "No":"",
     },
 };
@@ -102,7 +102,7 @@ class Tree_Node{
                         }
                     }
                     break;
-                case "Qué tipo de consulta se realizará mas?":
+                case "Qué tipo de consulta se realizará más?":
                     if(this._prev_node._answer==="Usaré todos los campos"){
                         if(this._answer==="Sí"){
                             this._final_options=[answers[1], answers[4]];
@@ -144,29 +144,15 @@ class Tree_Node{
                 "<div class='mx-auto text-center'>" +
                 "<form id='pathData' method='post' action='/results'><input id='sendData' name='jsonData' type='hidden' value=''>" +
                 "<input id='opc_db' name='opc_db' type='hidden' value=''>" +
-                "<button id='Si' type='button' class='mx-3 btn-final btn btn-lg btn-danger'>Si</button>" +
-                "<button id='No' type='button' class='mx-3 btn-final btn btn-lg btn-danger'>No</button>" +
-                "</form></div>"
+                "<div class='row'>"+
+                "<div class='col-md'><button id='Si' type='button' class='mx-3 w-50 btn-final btn btn-lg btn-danger'>Si</button></div>" +
+                "<div class='col-md'><button id='No' type='button' class='mx-3 w-50 btn-final btn btn-lg btn-danger'>No</button></div>" +
+                "</div></form></div>"
             );
 
             return true;
         }
         return false;
     }
-    WritePrices(){
-        let tables = `<div class="row mx-auto">`;
-        for(let i=0;i<this._final_options.length;i++){
-            tables+=`<div class="mx-auto text-center d-inline-block"><table class="table">`;
-            let t_header=`<th colspan="2">${this._final_options[i]}</th>`;
-            let t_body=``;
-            let option=prices[this._final_options[i]];
-            for(let j=0;j<Object.keys(option).length;j++){
-                let opt_key=Object.keys(option)[j];
-                t_body+=`<tr><td class="text-left">${opt_key}</td><td class="text-left">${option[opt_key]}</td></tr>`
-            }
-            tables+=t_header+t_body+`</table></div>`;
-        }
-        tables+=`</div>`;
-        return tables;
-    }
+
 }
