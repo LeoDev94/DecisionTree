@@ -4,8 +4,12 @@ $(document).ready(function(){
     var finished=false;
     var finished_slide = true;
 
-    $('#c_next').hide();
-    $('#c_previous').hide();
+    let c_next =$('#c_next');
+    let c_previous =$('#c_previous');
+
+
+    c_next.hide();
+    c_previous.hide();
 
 
     $('#numPregunta').html(`Pregunta ${index+1}`);
@@ -22,18 +26,18 @@ $(document).ready(function(){
     $('#carouselExampleIndicators').on('slid.bs.carousel',function () {
         console.log("I'm done going sliding");
         finished_slide = true;
-        $('#c_next').show();
-        $('#c_previous').show();
+        c_next.show();
+        c_previous.show();
 
         if(index === path.length-1){
-            $('#c_next').hide();
+            c_next.hide();
         }else if(index === 0){
-            $('#c_previous').hide();
+            c_previous.hide();
         }
     });
 
 
-    $('#c_previous').click(function (e) {
+    c_previous.click(function (e) {
         if(finished_slide){
         if(index>0){
             index--;
@@ -49,7 +53,7 @@ $(document).ready(function(){
         }
     });
 
-    $('#c_next').click(function (e) {
+    c_next.click(function (e) {
         if(finished_slide){
         if(index<path.length-1){
             index++;
@@ -126,7 +130,7 @@ $(document).ready(function(){
 function createCard(index){
 
     let card = ` <div id="item${index}" class="carousel-item w-100" >
-                    <div class="mx-auto w-75 my-5">
+                    <div class="mx-auto w-75 mt-2 mb-5">
                         <h2 class="titulo_pregunta${index+1} text-center card-title mb-4">Pregunta texto</h2>
                         <div id="options${index}" class="mx-auto text-center row">
                             <div class="col-md">
@@ -141,8 +145,6 @@ function createCard(index){
     let indicator=`<li id="ind${index}" data-target="#carouselExampleIndicators" class="indicador" data-slide-to="${index}" class="active"></li>`
     $('.carousel-inner').append(card);
     $('.carousel-indicators').append(indicator);
-    //$('#c_next').click();
-
     $('#carouselExampleIndicators').carousel(index);
 
 }
