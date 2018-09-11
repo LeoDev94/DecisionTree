@@ -69,14 +69,25 @@ class DbGroup {
     }
 }
 class DBGroupArray{
-    constructor(){
+    constructor(path){
         this._db_groupArray=[];
+
+        let size = path.length;
+        let lastNode = path[size-1];
+        for(let i =0;i<lastNode._final_options.length;i++){
+            let imgUri="../images/";
+            imgUri += lastNode._final_options[i].split(' ').join('_');
+            imgUri+=".png";
+            this.Add(lastNode._final_options[i],i,imgUri);
+        }
     }
     Add(db_group,index,imgUri){
         this._db_groupArray.push(new DbGroup(db_group,index,imgUri))
     }
+
     get db_groupArray(){
         return this._db_groupArray;
     }
 }
+
 module.exports = DBGroupArray;
