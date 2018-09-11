@@ -18,8 +18,8 @@ const questions = {
         "Manejo de Sesiones":"",
     },
     "Las Transacciones deben mantener las propiedades ACID?":{
-        "Sí":"Manejarás mas del millón de registros?",
-        "No":"Manejarás mas del millón de registros?",
+        "Sí":"Manejarás más del millón de registros?",
+        "No":"Manejarás más del millón de registros?",
     },
     "Encontrar patrones o relaciones de comportamiento?":{
         "Sí":"",
