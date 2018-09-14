@@ -1,0 +1,26 @@
+extends layout_v2.pug
+
+
+block primary
+    div.card.w-75.mx-auto.shadow-sm.py-0.mt-5.mb-5.rounded
+        h3#numPregunta.card-header.ml-3.mb-2.shadow-lg.rounded.pb-4.pt-4(style='margin-top: -20px;background: linear-gradient(60deg,#ef5350,#d32f2f)') Pregunta
+        div.card-body
+            div#carouselExampleIndicators.carousel.slide(style='margin-bottom: -30px;padding-bottom: 30px', data-interval='false', data-wrap='false', data-ride='carousel')
+                ol.carousel-indicators
+                    each item, ind in path_UI
+                        li.indicador(data-target='#carouselExampleIndicators', data-slide-to=""+ind)
+                div.carousel-inner
+                    each item in path_UI
+                        div.carousel-item.active.w-100
+                            div.mx-auto.w-75.mt-2.mb-5
+                                h2.titulo_pregunta1.text-center.card-title.mb-4 #{item.question}
+                                div#options.mx-auto.text-center.row
+                                    each opt,index in item.options
+                                        div.col-md
+                                            button(id = "b-"+index).w-75.opciones.mx-3.opcion1.btn-danger.btn-lg.opcion-select(type='button') #{opt}
+                a#c_previous.carousel-control-prev(href='#carouselExampleIndicators', role='button', data-slide='prev')
+                    span.carousel-control-prev-icon(aria-hidden='true')
+                    span.sr-only Previous
+                a#c_next.carousel-control-next(href='#carouselExampleIndicators', role='button', data-slide='next')
+                    span.carousel-control-next-icon(aria-hidden='true')
+                    span.sr-only Next

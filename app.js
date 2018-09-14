@@ -15,23 +15,6 @@ var questionsRouter = require('./routes/questions');
 var app = express();
 
 
-
-
-// view engine setup
-/*db.fetch({},function (err,body) {
-    console.log(body.rows[0].doc.path);
-});*/
-
-/*(db.list(function(err,body){
-    if(!err){
-        body.rows.forEach(function (doc) {
-            console.log(doc);
-        })
-    }else{
-        console.log(err);
-    }
-}));*/
-
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
 

@@ -1,0 +1,20 @@
+doctype html
+html
+    head
+        meta(charset='UTF-8')
+        title Arbol de Decision
+        script(src='/javascripts/jquery-3.3.1.js')
+        script(src='/javascripts/popper.min.js')
+        link(rel='stylesheet', href='/stylesheets/normalize.css')
+        link(rel='stylesheet', href='/stylesheets/bootstrap.min.css')
+        link(rel='stylesheet', href='/stylesheets/style.css')
+
+        script(src='/javascripts/bootstrap.js')
+        script(src ='/javascripts/main_v2.js')
+    body.bg-project
+        block content
+            block sidebar
+                nav.navbar.navbar-light.bg-danger
+                    a.recargar.navbar-brand(href='/')
+                        h2.text-white Regresar al Inicio
+            block primary

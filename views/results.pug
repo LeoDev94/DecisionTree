@@ -13,6 +13,13 @@ block primary
                             span(aria-hidden="true") &times;
                     div.modal-body
                         div.container-fluid
+                            each db, index in item.db_array
+                                div.nav.nav-pills.flex-column.flex-sm-row
+                                    - if(index === 0){
+                                    a.flex-sm-fill.text-sm-center.nav-link.active
+                                    -} else{
+                                    a.flex-sm-fill.text-sm-center.nav-link.active
+                                    -}
                             div.row
                                 div.col-md-3
                                     - var imgUri = item.imgUri;

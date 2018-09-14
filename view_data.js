@@ -18,9 +18,12 @@ var dbname = 'arbol';
 var db = cloudant.db.use(dbname);
 
 db.fetch({},function (err,body) {
+
     if(!err){
+        console.log("no err");
+        console.log(body);
         body.rows.forEach(function (row) {
-            console.log(row.doc);
+            console.log(row);
             /*if(row.id==6){
                 let size = row.doc.path.length;
                 console.log(row.doc.path[size-1]);

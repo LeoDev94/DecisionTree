@@ -9,20 +9,35 @@ const answers = [
     "NoSQL Key Value"//7
 ];
 
-const question_tree_2 = {
-    "El caso de uso de su base de datos es:":["Transaccional","Analítico","Manejo de Sesiones"],
+const question_text = [
+    "El caso de uso de su base de datos es:",                   //0
+    "Las Transacciones deben mantener las propiedades ACID?",   //1
+    "Manejarás mas del millón de registros?",                   //2
+    "Encontrar patrones o relaciones de comportamiento?",       //3
+    "Qué tipo de consulta se realizará mas?",                   //4
+    "Necesidad de manejar información en tiempo real?"          //5
+];
 
-};
+const options_text = [
+    "Transaccional",            //0
+    "Analítico",                //1
+    "Manejo de Sesiones",       //2
+    "Sí",                       //3
+    "No",                       //4
+    "Usaré todos los campos",   //5
+    "Usaré campos específicos"  //6
+];
+
 
 const question_tree = {
     "El caso de uso de su base de datos es:":{
         "Transaccional":{
             "Las Transacciones deben mantener las propiedades ACID?":{
-                "Sí":{"Manejarás mas del millón de registros?":{
+                "Sí":{"Manejarás más del millón de registros?":{
                         "Sí":[answers[4],answers[0]],
                         "No":[answers[0]],}
                 },
-                "No":{"Manejarás mas del millón de registros?":{
+                "No":{"Manejarás más del millón de registros?":{
                         "Sí":[answers[2]],
                         "No":[answers[0],answers[2]],}
                 },
@@ -50,4 +65,8 @@ const question_tree = {
 
 };
 
-module.exports = {question_tree};
+
+
+
+
+module.exports = {question_tree,answers,question_text,options_text};

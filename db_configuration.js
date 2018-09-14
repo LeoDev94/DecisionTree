@@ -15,6 +15,13 @@ const dbConfig = {
 
 var cloudant = Cloudant(dbConfig);
 var dbname = 'arbol_pruebas';
+cloudant.db.create(dbname,function (err,body) {
+   if(!err){
+       console.log("created arbol_pruebas");
+   }
+});
 var db = cloudant.db.use(dbname);
 
-module.exports = db;
+console.log(db);
+
+
