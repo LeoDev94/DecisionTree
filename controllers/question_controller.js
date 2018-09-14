@@ -1,5 +1,5 @@
 let question_list = require('../models/question_list');
-let question_html = require('');
+//let question_html = require('');
 
 exports.show_quiz = function(req,res){
     res.render('questions_v2',{path_UI: question_list.path_UI});

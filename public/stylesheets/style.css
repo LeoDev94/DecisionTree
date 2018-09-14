@@ -15,3 +15,10 @@
 body, html{
   height: 100%;
 }
+
+.nav-pills .nav-link.active {
+  background-color: #dc3545 !important;
+}
+.tab-name {
+  color: black;
+}

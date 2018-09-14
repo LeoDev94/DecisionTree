@@ -14,7 +14,9 @@ const dbConfig = {
 };
 
 var cloudant = Cloudant(dbConfig);
-var dbname = 'arbol_pruebas';
-var db = cloudant.db.use(dbname);
+var db_test = 'arbol_pruebas';
+var db_prod = 'arbol';
+
+var db = cloudant.db.use(db_prod);
 
 module.exports = db;

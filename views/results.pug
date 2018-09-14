@@ -3,7 +3,7 @@ extends layout.pug
 
 block primary
 
-    each item in db_groups
+    each item,ind_item in db_groups
         div.modal.fade(id="modal_" + item.index,tabindex="-1",role="dialog",aria-labelledby="modalTitle_" + item.index,aria-hidden="true")
             div.modal-dialog.modal-dialog-centered.modal-lg(role="document")
                 div.modal-content
@@ -13,32 +13,29 @@ block primary
                             span(aria-hidden="true") &times;
                     div.modal-body
                         div.container-fluid
-                            each db, index in item.db_array
-                                div.nav.nav-pills.flex-column.flex-sm-row
-                                    - if(index === 0){
-                                    a.flex-sm-fill.text-sm-center.nav-link.active
-                                    -} else{
-                                    a.flex-sm-fill.text-sm-center.nav-link.active
-                                    -}
                             div.row
                                 div.col-md-3
                                     - var imgUri = item.imgUri;
                                     img.img-fluid(src = '/' + imgUri).py-2
                                 div.col-md-9
+                                    div.nav.nav-pills.flex-column.flex-sm-row.mb-2(role = "tablist")
+                                        each db, index in item.db_array
+                                            a.flex-sm-fill.text-sm-center.nav-link.tab-name(href="#db_"+ind_item+"_"+index,data-toggle="tab",role="tab",class = index === 0? "active":"") #{db.name}
                                     div.row.bg-dark(style={height:"2px"})
-                                    each db in item.db_array
-                                        div.row
-                                            div.col-md-9.my-2
-                                                h3 #{db.name}
-                                                p #{db.info}
-                                                a(href=db.site) Más Información
-                                            div.col-md-3
-                                                h5 Precio por mes
-                                                if (db.price==='Personalizado')
-                                                    h5 #{db.price}
-                                                else
-                                                    h5 #{db.price} Dólares
-                                        div.row.bg-dark(style={height:"2px"})
+                                    div.tab-content
+                                        each db, index in item.db_array
+                                            div.row.tab-pane.fade(id ="db_"+ind_item+"_"+index,class = index===0?"active show":"")
+                                                div.row
+                                                    div.col-md-9.my-2
+                                                        h3 #{db.name}
+                                                        p #{db.info}
+                                                        a(href=db.site) Más Información
+                                                    div.col-md-3.my-2
+                                                        h5 Precio por mes
+                                                        if (db.price==='Personalizado')
+                                                            h5 #{db.price}
+                                                        else
+                                                            h5 #{db.price} Dólares
                     div.modal-footer
                         button.btn.btn-secondary(data-dismiss="modal") Close
 

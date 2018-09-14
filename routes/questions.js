@@ -12,8 +12,8 @@ router.post('/',function (req,res,next) {
 
 });
 
-router.get('/v2',question_controller.show_quiz);
+//router.get('/v2',question_controller.show_quiz);
 
-router.get('/v2/answer',question_controller.answer_question);
+//router.get('/v2/answer',question_controller.answer_question);
 
 module.exports = router;

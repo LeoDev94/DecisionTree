@@ -13,27 +13,27 @@ const answers = [
 
 const questions = {
     "El caso de uso de su base de datos es:":{
-        "Transaccional":"Las Transacciones deben mantener las propiedades ACID (Atomicidad, Consistencia, Aislamiento y Durabilidad)?",
-        "Analítico":"Consiste en encontrar patrones o relaciones de comportamiento?",
+        "Transaccional":"¿Las Transacciones deben mantener las propiedades ACID? (Atomicidad, Consistencia, Aislamiento y Durabilidad)",
+        "Analítico":"¿Consiste en encontrar patrones o relaciones de comportamiento?",
         "Manejo de Sesiones":"",
     },
-    "Las Transacciones deben mantener las propiedades ACID (Atomicidad, Consistencia, Aislamiento y Durabilidad)?":{
-        "Sí":"Manejarás más del millón de registros?",
-        "No":"Manejarás más del millón de registros?",
+    "¿Las Transacciones deben mantener las propiedades ACID? (Atomicidad, Consistencia, Aislamiento y Durabilidad)":{
+        "Sí":"¿Manejarás más del millón de registros?",
+        "No":"¿Manejarás más del millón de registros?",
     },
-    "Consiste en encontrar patrones o relaciones de comportamiento?":{
+    "¿Consiste en encontrar patrones o relaciones de comportamiento?":{
         "Sí":"",
-        "No":"Qué tipo de consulta se realizará más?",
+        "No":"¿Qué tipo de consulta se realizará más?",
     },
-    "Manejarás más del millón de registros?":{
+    "¿Manejarás más del millón de registros?":{
         "Sí":"",
         "No":"",
     },
-    "Qué tipo de consulta se realizará más?":{
-        "Usaré todos los campos":"Necesidad de manejar información en tiempo real?",
-        "Usaré campos especificos":"Necesidad de manejar información en tiempo real?",
+    "¿Qué tipo de consulta se realizará más?":{
+        "Usaré todos los campos":"¿Necesidad de manejar información en tiempo real?",
+        "Usaré campos especificos":"¿Necesidad de manejar información en tiempo real?",
     },
-    "Necesidad de manejar información en tiempo real?":{
+    "¿Necesidad de manejar información en tiempo real?":{
         "Sí":"",
         "No":"",
     },
@@ -83,7 +83,7 @@ class Tree_Node{
                     final_answer=answers[6];
                     this._final_options=[final_answer];
                     break;
-                case "Las Transacciones deben mantener las propiedades ACID (Atomicidad, Consistencia, Aislamiento y Durabilidad)?":
+                case "¿Las Transacciones deben mantener las propiedades ACID? (Atomicidad, Consistencia, Aislamiento y Durabilidad)":
                     if(this._prev_node._answer==="Sí"){
                         if(this._answer==="Sí"){
                             this._final_options=[answers[1], answers[0]];
@@ -102,7 +102,7 @@ class Tree_Node{
                         }
                     }
                     break;
-                case "Qué tipo de consulta se realizará más?":
+                case "¿Qué tipo de consulta se realizará más?":
                     if(this._prev_node._answer==="Usaré todos los campos"){
                         if(this._answer==="Sí"){
                             this._final_options=[answers[1], answers[4]];
