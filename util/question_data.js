@@ -11,11 +11,17 @@ const answers = [
 
 const question_text = [
     "El caso de uso de su base de datos es:",                   //0
-    "Las Transacciones deben mantener las propiedades ACID?",   //1
-    "Manejarás mas del millón de registros?",                   //2
-    "Encontrar patrones o relaciones de comportamiento?",       //3
-    "Qué tipo de consulta se realizará mas?",                   //4
-    "Necesidad de manejar información en tiempo real?"          //5
+
+    "¿Las Transacciones deben mantener las propiedades ACID " +
+    "(Atomicidad, Consistencia, Aislamiento y Durabilidad)?",   //1
+
+    "¿Manejarás más del millón de registros?",                   //2
+
+    "¿Consiste en encontrar patrones o relaciones de" +
+        " comportamiento?",                                     //3
+
+    "¿Qué tipo de consulta se realizará más?",                   //4
+    "¿Necesidad de manejar información en tiempo real?"          //5
 ];
 
 const options_text = [

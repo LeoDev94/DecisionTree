@@ -9,7 +9,7 @@ class Question_List{
     }
     Cut_List(index){
         let before_size = this.Size();
-        this._path.splice(index*1+1);
+        this._path.splice(index*1);
         this._path_UI.splice(index*1+1);
         for(let i = 0;i<before_size-index;i++){
             this._current_node = this._current_node.father;
@@ -29,11 +29,20 @@ class Question_List{
         this._path_UI.push({question: this._current_node.text,options:this._current_node.options});
     }
 
+    New_Question(){
+        let size= this._path_UI.length;
+        return this._path_UI[size-1].question;
+    }
+
+    New_Options(){
+        let size= this._path_UI.length;
+        return this._path_UI[size-1].options;
+    }
     Size(){
         return this._path.length;
     }
-    Check_Result(){
-
+    Is_Result() {
+        return (this._current_node.children == null);
     }
     get path() {
         return this._path;
@@ -46,4 +55,4 @@ class Question_List{
     }
 }
 
-module.exports = new Question_List();
+module.exports =  Question_List;

@@ -29,9 +29,9 @@ $(document).ready(function(){
         c_next.show();
         c_previous.show();
 
-        if(index === path.length-1){
+        if(index*1 === path.length-1){
             c_next.hide();
-        }else if(index === 0){
+        }else if(index*1 === 0){
             c_previous.hide();
         }
     });

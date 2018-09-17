@@ -3,6 +3,7 @@ const question_data = require('../util/question_data');
 
 const yes_no = [question_data.options_text[3],question_data.options_text[4]];
 
+//DECLARATON OF MAIN TREE CLASS
 class question_node{
     constructor(text,options,children){
         this._text = text;
@@ -14,6 +15,7 @@ class question_node{
                 this._children[i].father = this;
             }
     }
+    //Setters
     set father(value) {
         this._father = value;
     }
@@ -33,6 +35,7 @@ class question_node{
     }
 }
 
+//DECLARE ANSWER SCENARIOS HERE
 
 let scenario_1 = new question_node("",[question_data.answers[4],question_data.answers[0]],null);
 let scenario_2 = new question_node("",[question_data.answers[0]],null);
@@ -45,6 +48,8 @@ let scenario_8 = new question_node("",[question_data.answers[4],question_data.an
 let scenario_9 = new question_node("",[question_data.answers[5],question_data.answers[2]],null);
 let scenario_10 = new question_node("",[question_data.answers[7]],null);
 
+
+//CREATE MAIN TREE HERE
 let question_tree = new question_node(
     question_data.question_text[0],
     [question_data.options_text[0],question_data.options_text[1],question_data.options_text[2]],
