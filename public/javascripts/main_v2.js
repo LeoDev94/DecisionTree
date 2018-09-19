@@ -11,9 +11,13 @@ $(document).ready(function() {
     let c_next = $('#c_next');
     let c_previous = $('#c_previous');
     let body_handle = $('body');
+    let num_pregunta = $('#numPregunta');
+
+    let btn_size=$('#b-2').height();
+    $('.opciones').height(btn_size);
 
     indicators.carousel(index);
-
+    num_pregunta.html(`Pregunta ${index+1}`);
     c_next.hide();
     c_previous.hide();
 
@@ -63,29 +67,43 @@ $(document).ready(function() {
 
     body_handle.on('click','button.opciones',function (e) {
         let obj ={index:index,question:current_question,answer: e.target.textContent};
+        finished_path = false;
         //console.log(obj);
-       $.post("/questions/v2/answer",obj,function (data,status) {
+       $.post("/quiz/answer",obj,function (data,status) {
            console.log(status,data);
+
            for(let i=index*1+1.0;i<path_length;i++){
                $('div').remove(`#item${i}`);
                $('li').remove(`#ind${i}`);
            }
-           finished_path = data.result;
-           path_length = data.path_length;
            index++;
-           $('.carousel-inner').append(make_card(index,data.question,data.options));
-           $('.carousel-indicators').append(make_indicator(index));
-           current_question = data.question;
-           $('#carouselIndicators').carousel(index);
+           num_pregunta.html(`Pregunta ${index+1}`);
+           process_data(data);
+           check_finished();
        });
 
     });
 
+    body_handle.on('click','button.btn-final',function (e) {
+        $('#opc_db').val(this.id);
+        $('#pathData').submit();
+    });
+
     function check_finished(){
-        if((index===path_length-1)&&finished_path){
-            $('#numPregunta').html("Recomendación");
+        if((index*1===path_length-1)&&finished_path){
+            num_pregunta.html("Recomendación");
         }else{
-            $('#numPregunta').html(`Pregunta ${index*1+1}`);
+            num_pregunta.html(`Pregunta ${index*1+1}`);
         }
     }
+    function process_data(data){
+        finished_path = data.result;
+        path_length = data.path_length;
+        let card = finished_path?make_result_card(index,data.options):make_card(index,data.question,data.options,data.examples);
+        $('.carousel-inner').append(card);
+        $('.carousel-indicators').append(make_indicator(index));
+        current_question = data.question;
+        $('#carouselIndicators').carousel(index);
+    }
+
 });

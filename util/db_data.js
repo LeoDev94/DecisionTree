@@ -127,4 +127,205 @@ const db_prices = {
     "Hazelcast": 219.52
 };
 
-module.exports = {db_sites,db_info,db_prices};
+const database_types =[
+    "SQL",
+    "SQL In Memory",
+    "NoSQL Document",
+    "NoSQL Column In Memory",
+    "NoSQL Column Store",
+    "NoSQL GraphDB",
+    "NoSQL Key Value"
+];
+
+const single_db = {
+    name: "Oracle",
+    price: 546.40,
+    info:"",
+    web:"",
+};
+
+const db_type_info = {
+    name: "SQL",
+    databases:[
+        {
+        name: "Oracle",
+        price: 546.40,
+        info: "",
+        web: "",
+        },
+        "Microsoft SQL Server","MySQL"],
+};
+
+
+const all_db_types = [
+    {
+        name: "SQL",
+        databases:[
+            {
+                name: "Oracle",
+                price: 546.40,
+                info:"",
+                web:"",
+            },
+            {
+                name: "Microsoft SQL Server",
+                price: "",
+                info:"",
+                web:""
+            },{
+                name: "MySQL",
+                price:"",
+                web:""
+            }
+        ],
+    },
+    {
+        name: "SQL In Memory",
+        databases:[
+            {
+                name: "Oracle In Memory",
+                price: 546.40,
+                info:"",
+                web:"",
+            },
+            {
+                name: "VoltDB",
+                price: "",
+                info:"",
+                web:""
+            },{
+                name: "SAP Hana",
+                price:"",
+                web:""
+            }
+        ],
+    },
+    {
+        name: "NoSQL Document",
+        databases:[
+            {
+                name: "MongoDB",
+                price: 546.40,
+                info:"",
+                web:"",
+            },
+            {
+                name: "CouchDB",
+                price: "",
+                info:"",
+                web:""
+            },{
+                name: "CouchBase",
+                price:"",
+                web:""
+            }
+        ],
+    },
+    {
+        name: "NoSQL Column In Memory",
+        databases:[
+            {
+                name: "Oracle",
+                price: 546.40,
+                info:"",
+                web:"",
+            },
+            {
+                name: "Microsoft SQL Server",
+                price: "",
+                info:"",
+                web:""
+            },{
+                name: "MySQL",
+                price:"",
+                web:""
+            }
+        ],
+    },
+    {
+        name: "NoSQL Column Store",
+        databases:[
+            {
+                name: "Oracle",
+                price: 546.40,
+                info:"",
+                web:"",
+            },
+            {
+                name: "Microsoft SQL Server",
+                price: "",
+                info:"",
+                web:""
+            },{
+                name: "MySQL",
+                price:"",
+                web:""
+            }
+        ],
+    },
+    {
+        name: "NoSQL GraphDB",
+        databases:[
+            {
+                name: "Oracle",
+                price: 546.40,
+                info:"",
+                web:"",
+            },
+            {
+                name: "Microsoft SQL Server",
+                price: "",
+                info:"",
+                web:""
+            },{
+                name: "MySQL",
+                price:"",
+                web:""
+            }
+        ],
+    },
+    {
+        name: "NoSQL Key Value",
+        databases:[
+            {
+                name: "Oracle",
+                price: 546.40,
+                info:"",
+                web:"",
+            },
+            {
+                name: "Microsoft SQL Server",
+                price: "",
+                info:"",
+                web:""
+            },{
+                name: "MySQL",
+                price:"",
+                web:""
+            }
+        ],
+    }
+];
+
+class simple_db {
+    constructor(name,price,info,web){
+        this._name = name;
+        this._price = price;
+        this._info = info;
+        this._web = web;
+    }
+}
+
+
+const answer_database = {
+    "SQL": ["Oracle","Microsoft SQL Server","MySQL"],
+    "SQL In Memory": ["Oracle In Memory","VoltDB","SAP Hana"],
+    "NoSQL Document": ["MongoDB","CouchDB","CouchBase"],
+    "NoSQL Column In Memory": ["HBase","Cassandra","MonetDB"],
+    "NoSQL Column Store": ["HBase","Cassandra","MariaDB Column Store"],
+    "NoSQL GraphDB": ["Neo4j","Datasax Enterprise GraphDB","OrientDB"],
+    "NoSQL Key Value": ["Redis","Memcached","Hazelcast"],
+};
+
+
+module.exports = {db_sites,db_info,db_prices,answer_database};

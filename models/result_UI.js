@@ -28,7 +28,7 @@ class DbGroup {
         this._db_group=db_group;
         this._imgUri=imgUri;
         this._db_array=[];
-        this.build();
+        this.new_build();
     }
     get index(){
         return this._index;
@@ -41,6 +41,12 @@ class DbGroup {
     }
     get db_array(){
         return this._db_array;
+    }
+    new_build(){
+        let database_answers = db_data.answer_database[this._db_group];
+        for(let i=0;i<database_answers.length;i++){
+            this._db_array.push(new DbInfo(database_answers[i]));
+        }
     }
     build(){
         switch(this._db_group){
@@ -74,6 +80,10 @@ class DBGroupArray{
 
         let size = path.length;
         let lastNode = path[size-1];
+        this.Build_Array_v2(lastNode);
+    }
+
+    Build_Array(lastNode){
         for(let i =0;i<lastNode._final_options.length;i++){
             let imgUri="../images/";
             imgUri += lastNode._final_options[i].split(' ').join('_');
@@ -81,6 +91,16 @@ class DBGroupArray{
             this.Add(lastNode._final_options[i],i,imgUri);
         }
     }
+
+    Build_Array_v2(lastNode){
+        for(let i =0;i<lastNode.options.length;i++){
+            let imgUri="../images/";
+            imgUri += lastNode.options[i].split(' ').join('_');
+            imgUri+=".png";
+            this.Add(lastNode.options[i],i,imgUri);
+        }
+    }
+
     Add(db_group,index,imgUri){
         this._db_groupArray.push(new DbGroup(db_group,index,imgUri))
     }

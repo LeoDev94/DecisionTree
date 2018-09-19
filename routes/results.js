@@ -6,9 +6,9 @@ let result_controller = require('../controllers/result_controller');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-    res.render('index');
+    res.redirect('/');
 });
-router.post('/',result_controller.show_results);
+//router.post('/',result_controller.show_results);
 
 
 module.exports = router;
