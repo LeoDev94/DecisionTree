@@ -75,7 +75,7 @@ let question_tree = new question_node(
                 new question_node(question_data.question_text[2],yes_no,[scenario_3,scenario_4])
             ],
             //examples
-            question_data.examples
+            question_data.all_examples[0]
         ),
         new question_node(
             question_data.question_text[3],//text
@@ -90,7 +90,8 @@ let question_tree = new question_node(
                         new question_node(question_data.question_text[5],yes_no,[scenario_8,scenario_9])
                     ]
                 )
-            ]
+            ],
+            question_data.all_examples[1]
         ),
         scenario_10
     ]

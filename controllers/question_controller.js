@@ -30,7 +30,7 @@ exports.answer_question = function(req,res){
 exports.save_answer = function(req,res){
     let has_db = req.body.opc_db;
     question_list.Add_Result(has_db);
-    save_result(question_list.path,has_db);
+    //save_result(question_list.path,has_db);
     let db_gArray = new DbGroupArray(question_list.path_UI);
     console.log(question_list.path);
     res.render('results',{db_groups:db_gArray.db_groupArray});

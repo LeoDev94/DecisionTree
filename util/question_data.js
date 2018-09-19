@@ -22,6 +22,36 @@ const question_text = [
     "¿Qué tipo de consulta se realizará más?",                   //4
     "¿Necesidad de manejar información en tiempo real?"          //5
 ];
+
+const all_examples = [
+    [
+        {
+            title: "Ejemplo de Información Crítica",
+            examples:[
+                "Registro de ventas en una empresa comercial",
+                "Registro de transacciones financieras en un banco"
+            ],
+        },
+        {
+            title: "Ejemplo de Información No Crítica",
+            examples:[
+                "Registro los estados de usuarios en una red social",
+                "Registro de los comentarios de un post",
+                "Guardar las conversaciones de un chatbot"
+            ],
+        }
+    ],
+    [
+        {
+            title: "Ejemplos",
+            examples:[
+                "Sistema de recomendaciones",
+                "Detección de fraudes"
+            ],
+        }
+    ]
+];
+
 const examples = [
     {
         title: "Ejemplo de Información Crítica",
@@ -99,4 +129,4 @@ const question_tree = {
 
 
 
-module.exports = {question_tree,answers,question_text,options_text,examples};
+module.exports = {question_tree,answers,question_text,options_text,all_examples};

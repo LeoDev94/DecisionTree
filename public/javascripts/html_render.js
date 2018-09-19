@@ -8,10 +8,13 @@ let make_card = function(index,question,options,examples){
         examples_html+=`<div class="row my-lg-3">`;
         for(let i=0;i<examples.length;i++){
             examples_html+=`<div class="col-md">
-                            <h5>${examples[i].title}</h5>
-                            <ul>`;
+                            <h5 class="text-center">${examples[i].title}</h5>
+                            <ul class="${examples.length>1?"":"text-center row"}" style="list-style-position: initial">`;
+
             for(let j=0;j<examples[i].examples.length;j++){
-                examples_html+=`<li><h6>${examples[i].examples[j]}</h6></li>`;
+                examples_html+=`<div class="col-md ${examples.length>1?"":"d-flex flex-column align-items-center"} ">
+                                <li class=""><h6>${examples[i].examples[j]}</h6></li>
+                                </div>`;
             }
             examples_html+=`</ul></div>`;
         }
