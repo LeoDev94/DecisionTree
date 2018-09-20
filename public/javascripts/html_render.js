@@ -24,7 +24,7 @@ let make_card = function(index,question,options,examples){
     let options_html = `<div id="options${index}" class="mx-auto text-center row">`;
     for(let i=0; i<options.length;i++){
         options_html +=`<div class="col-md">
-                            <button id="${index*2+1}" type="button" href="#" class="mx-3 w-50 opciones opcion${index*2+1} btn-danger btn-lg opcion-select">${options[i]}</button>
+                            <button id="${index*2+1}" type="button" style='cursor: pointer' class="mx-3 w-50 opciones opcion${index*2+1} btn-danger btn-lg opcion-select">${options[i]}</button>
                         </div>`;
     }
 
@@ -40,19 +40,19 @@ let make_result_card = function(index,options){
     let results = `<div class="row">`;
     for(let i=0;i<options.length;i++){
         results+=`<div class="col-md text-center">
-                        <h3 class="px-3">${options[i]}</h3>
+                        <h3 id="db_result_title_${i}" class="px-3 db_results">${options[i]}</h3>
                         <img class="img-fluid px-2" src="../images/${options[i].split(' ').join('_')}.png">
                     </div>`;
     }
     results+=`</div>`;
 
-    let options_html = "<h3 class='text-center'>¿Su base de datos actual se encuentra entre las opciones recomendadas?</h3>" +
+    let options_html = "<h3 class='text-center'>¿La categoría de su base de datos actual se encuentra entre las opciones mostradas?</h3>" +
         "<div class='mx-auto text-center'>" +
         "<form id='pathData' method='post' action='/results'>" +
         "<input id='opc_db' name='opc_db' type='hidden' value=''>" +
         "<div class='row'>"+
-        "<div class='col-md'><button id='Si' type='button' class='mx-3 w-50 btn-final btn btn-lg btn-danger'>Sí</button></div>" +
-        "<div class='col-md'><button id='No' type='button' class='mx-3 w-50 btn-final btn btn-lg btn-danger'>No</button></div>" +
+        "<div class='col-md'><button id='Si' type='button' style='cursor: pointer' class='mx-3 w-50 btn-final btn btn-lg btn-danger'>Sí</button></div>" +
+        "<div class='col-md'><button id='No' type='button' style='cursor: pointer' class='mx-3 w-50 btn-final btn btn-lg btn-danger'>No</button></div>" +
         "</div></form></div>";
 
 

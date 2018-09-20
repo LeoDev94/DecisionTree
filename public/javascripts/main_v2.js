@@ -80,6 +80,7 @@ $(document).ready(function() {
            num_pregunta.html(`Pregunta ${index+1}`);
            process_data(data);
            check_finished();
+
        });
 
     });
@@ -104,6 +105,19 @@ $(document).ready(function() {
         $('.carousel-indicators').append(make_indicator(index));
         current_question = data.question;
         $('#carouselIndicators').carousel(index);
+        if(finished_path){
+            same_size(data.options.length);
+        }
+    }
+    function same_size(opt_length){
+        let max = 0;
+        for(let i=0;i<opt_length;i++){
+            let h_title=$(`#db_result_title_${i}`);
+            if(max<h_title.height()){
+                max = h_title.height();
+            }
+        }
+        $('.db_results').height(max*1);
     }
 
 });
