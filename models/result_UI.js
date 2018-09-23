@@ -28,7 +28,8 @@ class DbGroup {
         this._db_group=db_group;
         this._imgUri=imgUri;
         this._db_array=[];
-        this.new_build();
+        //this.new_build();
+        this.model_build();
     }
     get index(){
         return this._index;
@@ -42,6 +43,11 @@ class DbGroup {
     get db_array(){
         return this._db_array;
     }
+
+    model_build(){
+        this._db_array = db_data.findDBs(this._db_group);
+    }
+
     new_build(){
         let database_answers = db_data.answer_database[this._db_group];
         for(let i=0;i<database_answers.length;i++){
