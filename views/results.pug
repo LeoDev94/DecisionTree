@@ -8,32 +8,33 @@ block primary
                 h3 Recomendaciones de Bases de Datos
         div.row.my-lg-5
             div.col-lg-11.mx-auto
-                ul.nav.nav-tabs(role="tablist")
-                    each item,ind in db_groups
-                        li.nav-item
-                            a.nav-link(data-toggle="tab",role="tab",href="#group_"+ind,class = ind===0?"active":"",aria-selected=ind===0?"true":"false")
-                                h3 #{item.db_group}
-                div.tab-content.my-lg-5
-                    each item,ind_item in db_groups
-                        div.tab-pane.fade(class = ind_item===0?"active show":"",id="group_"+ind_item,role="tabpanel")
-                            div.row
-                                div.col-md-3
-                                    - var imgUri = item.imgUri;
-                                    img.img-fluid(src = '/' + imgUri).py-2
-                                div.col-md-9
-                                    div.nav.nav-pills.flex-column.flex-sm-row.mb-2(role = "tablist")
-                                        each db, index in item.db_array
-                                            a.flex-sm-fill.text-sm-center.nav-link.tab-name(href="#db_" + ind_item + "_" + index,data-toggle="tab",role="tab",class = index === 0 ? "active" : "") #{db.name}
-                                    div.row.bg-dark(style={height: "2px"})
-                                    div.tab-content
-                                        each db, index in item.db_array
-                                            div.row.tab-pane.fade(id ="db_" + ind_item + "_" + index,class = index === 0 ? "active show":"")
-                                                div.row
-                                                    div.col-md-9.my-2
-                                                        h3 #{db.name}
-                                                        p #{db.info}
-                                                        a(href=db.web) Más Información
-                                                    div.col-md-3.my-2
-                                                        h5 Precio por mes ($)
-                                                        - var dec_price = db.price ==="Personalizado"?db.price:parseFloat(Math.round(db.price * 100) / 100).toFixed(2);
-                                                        h5 #{dec_price}
+                div.tab(role="tabpanel")
+                    ul.nav.nav-tabs(role="tablist")
+                        each item,ind in db_groups
+                            li.nav-item
+                                a.nav-link(data-toggle="tab",role="tab",href="#group_"+ind,class = ind===0?"active":"",aria-selected=ind===0?"true":"false")
+                                    h3 #{item.db_group}
+                    div.tab-content.my-lg-5
+                        each item,ind_item in db_groups
+                            div.tab-pane.fade(class = ind_item===0?"active show":"",id="group_"+ind_item,role="tabpanel")
+                                div.row
+                                    div.col-md-3
+                                        - var imgUri = item.imgUri;
+                                        img.img-fluid(src = '/' + imgUri).py-2
+                                    div.col-md-9
+                                        div.nav.nav-pills.flex-column.flex-sm-row.mb-2(role = "tablist")
+                                            each db, index in item.db_array
+                                                a.flex-sm-fill.text-sm-center.nav-link.tab-name(href="#db_" + ind_item + "_" + index,data-toggle="tab",role="tab",class = index === 0 ? "active" : "") #{db.name}
+                                        div.row.bg-dark(style={height: "2px"})
+                                        div.tab-content
+                                            each db, index in item.db_array
+                                                div.row.tab-pane.fade(id ="db_" + ind_item + "_" + index,class = index === 0 ? "active show":"")
+                                                    div.row
+                                                        div.col-md-9.my-2
+                                                            h3 #{db.name}
+                                                            p #{db.info}
+                                                            a(href=db.web) Más Información
+                                                        div.col-md-3.my-2
+                                                            h5 Precio por mes ($)
+                                                            - var dec_price = db.price ==="Personalizado"?db.price:parseFloat(Math.round(db.price * 100) / 100).toFixed(2);
+                                                            h5 #{dec_price}
