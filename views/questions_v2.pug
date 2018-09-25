@@ -17,7 +17,7 @@ block primary
                                 div#options.mx-auto.text-center.row
                                     each opt,index in item.options
                                         div.col-md
-                                            button(id = "b-"+index).w-75.opciones.mx-3.opcion1.btn-danger.btn-lg.opcion-select(type='button') #{opt}
+                                            button(id = "b-"+index,type='button').w-75.opciones.mx-3.opcion1.btn-danger.btn-lg.opcion-select #{opt}
                 a#c_previous.carousel-control-prev(href='#carouselIndicators', role='button', data-slide='prev')
                     span.carousel-control-prev-icon(aria-hidden='true')
                     span.sr-only Previous

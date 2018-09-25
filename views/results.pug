@@ -1,4 +1,4 @@
-extends layout.pug
+extends layout_v2.pug
 
 
 block primary
@@ -13,7 +13,7 @@ block primary
                         li.nav-item
                             a.nav-link(data-toggle="tab",role="tab",href="#group_"+ind,class = ind===0?"active":"",aria-selected=ind===0?"true":"false")
                                 h3 #{item.db_group}
-                div.tab-content
+                div.tab-content.my-lg-5
                     each item,ind_item in db_groups
                         div.tab-pane.fade(class = ind_item===0?"active show":"",id="group_"+ind_item,role="tabpanel")
                             div.row

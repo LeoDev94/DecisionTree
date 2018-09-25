@@ -2,20 +2,26 @@ doctype html
 html
     head
         meta(charset='UTF-8')
-        title Arbol de Decision
+        title Árbol de Decisión
         script(src='/javascripts/jquery-3.3.1.js')
         script(src='/javascripts/popper.min.js')
         link(rel='stylesheet', href='/stylesheets/normalize.css')
         link(rel='stylesheet', href='/stylesheets/bootstrap.min.css')
         link(rel='stylesheet', href='/stylesheets/style.css')
+        link(rel='stylesheet', href='/stylesheets/open-iconic-bootstrap.css')
 
         script(src ='/javascripts/bootstrap.js')
-        script(src ='/javascripts/main_v2.js')
         script(src ='/javascripts/html_render.js')
+        script(src ='/javascripts/svg-injector.min.js')
+        script(src ='/javascripts/main_v2.js')
+
     body.bg-project
         block content
             block sidebar
                 nav.navbar.navbar-light.bg-danger
                     a.recargar.navbar-brand(href='/')
-                        h2.text-white Regresar al Inicio
+                        img(src="/sprite/open-iconic.svg" class="iconic-sprite" style="display:none;")
+                        svg.align-top.mr-2(viewBox="0 0 8 8" class="icon")
+                            use(xlink:href="#home" class="home-icon")
+                        h2.text-white.d-inline-block.align-bottom Regresar al Inicio
             block primary

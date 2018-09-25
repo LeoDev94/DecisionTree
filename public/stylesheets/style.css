@@ -22,3 +22,23 @@ body, html{
 .tab-name {
   color: black;
 }
+
+.icon {
+  width: 40px;
+  height: 40px;
+}
+
+.home-icon {
+  fill: white;
+}
+
+.list-group {
+  max-height: 235px;
+  margin-bottom: 10px;
+  overflow:scroll;
+  overflow-x: hidden;
+}
+
+.btn-lg {
+  cursor: pointer
+}

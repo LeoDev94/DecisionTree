@@ -1,8 +1,12 @@
 let Question_List = require('../models/question_list');
-let question_list = new Question_List();
+
 let DbGroupArray = require('../models/result_UI');
 
+let db_data = require('../util/db_data');
+
 let save_result = require('../models/result_DB');
+
+let question_list = new Question_List();
 
 exports.show_quiz = function(req,res){
     question_list = new Question_List();
@@ -16,24 +20,23 @@ exports.answer_question = function(req,res){
     console.log("index:",index);
     question_list.Cut_List(index);
     question_list.Add_Node(question,answer);
-
-    let obj = {
-        question:question_list.New_Question(),
-        options:question_list.New_Options(),
-        path_length:question_list.path_UI.length,
-        result: question_list.Is_Result(),
-    };
     console.log("success");
-    res.send(question_list.New_Data());
+    let dbs = [];
+    if(question_list.Is_Result()){
+        let options = question_list.New_Options();
+        for(let i=0;i<options.length;i++){
+            dbs.push(db_data.findDBs(options[i]));
+        }
+    }
+    res.send({new_data:question_list.New_Data(),dbs:dbs});
 };
 
 exports.save_answer = function(req,res){
     let has_db = req.body.opc_db;
     question_list.Add_Result(has_db);
-    //save_result(question_list.path,has_db);
+    save_result(question_list.path,has_db);
     let db_gArray = new DbGroupArray(question_list.path_UI);
     console.log(question_list.path);
-    //res.redirect('/');
     res.render('results',{db_groups:db_gArray.db_groupArray});
 };
 

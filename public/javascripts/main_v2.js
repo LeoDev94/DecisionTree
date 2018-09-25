@@ -5,6 +5,10 @@ $(document).ready(function() {
     let finished_path = false;
     let path_length = 1;
 
+    let mySVGsToInject = document.querySelectorAll('.iconic-sprite');
+
+    // Do the injection
+    SVGInjector(mySVGsToInject);
 
     let current_question = $('.titulo_pregunta0').text();
     let indicators = $('#carouselIndicators');
@@ -80,6 +84,7 @@ $(document).ready(function() {
            num_pregunta.html(`Pregunta ${index+1}`);
            process_data(data);
            check_finished();
+
        });
 
     });
@@ -97,13 +102,26 @@ $(document).ready(function() {
         }
     }
     function process_data(data){
-        finished_path = data.result;
-        path_length = data.path_length;
-        let card = finished_path?make_result_card(index,data.options):make_card(index,data.question,data.options,data.examples);
+        finished_path = data.new_data.result;
+        path_length = data.new_data.path_length;
+        let card = finished_path?make_result_card(index,data.new_data.options,data.dbs):make_card(index,data.new_data.question,data.new_data.options,data.new_data.examples);
         $('.carousel-inner').append(card);
         $('.carousel-indicators').append(make_indicator(index));
-        current_question = data.question;
+        current_question = data.new_data.question;
         $('#carouselIndicators').carousel(index);
+        if(finished_path){
+            same_size(data.new_data.options.length);
+        }
+    }
+    function same_size(opt_length){
+        let max = 0;
+        for(let i=0;i<opt_length;i++){
+            let h_title=$(`#db_result_title_${i}`);
+            if(max<h_title.height()){
+                max = h_title.height();
+            }
+        }
+        $('.db_results').height(max*1);
     }
 
 });

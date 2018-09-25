@@ -8,10 +8,13 @@ let make_card = function(index,question,options,examples){
         examples_html+=`<div class="row my-lg-3">`;
         for(let i=0;i<examples.length;i++){
             examples_html+=`<div class="col-md">
-                            <h5>${examples[i].title}</h5>
-                            <ul>`;
+                            <h5 class="text-center">${examples[i].title}</h5>
+                            <ul class="${examples.length>1?"":"text-center row"}" style="list-style-position: initial">`;
+
             for(let j=0;j<examples[i].examples.length;j++){
-                examples_html+=`<li><h6>${examples[i].examples[j]}</h6></li>`;
+                examples_html+=`<div class="col-md ${examples.length>1?"":"d-flex flex-column align-items-center"} ">
+                                <li class=""><h6>${examples[i].examples[j]}</h6></li>
+                                </div>`;
             }
             examples_html+=`</ul></div>`;
         }
@@ -21,7 +24,7 @@ let make_card = function(index,question,options,examples){
     let options_html = `<div id="options${index}" class="mx-auto text-center row">`;
     for(let i=0; i<options.length;i++){
         options_html +=`<div class="col-md">
-                            <button id="${index*2+1}" type="button" href="#" class="mx-3 w-50 opciones opcion${index*2+1} btn-danger btn-lg opcion-select">${options[i]}</button>
+                            <button id="${index*2+1}" type="button" class="mx-3 w-50 opciones opcion${index*2+1} btn-danger btn-lg opcion-select">${options[i]}</button>
                         </div>`;
     }
 
@@ -30,20 +33,53 @@ let make_card = function(index,question,options,examples){
     return head_html+examples_html+options_html+footer_html;
 };
 
-let make_result_card = function(index,options){
-    let head_html =  `<div id="item${index}" class="carousel-item w-100" >
-                        <div class="mx-auto w-75 mt-2 mb-5">`;
-
-    let results = `<div class="row">`;
+function make_lists(options,dbs){
+    let results = ``;
     for(let i=0;i<options.length;i++){
         results+=`<div class="col-md text-center">
-                        <h3 class="px-3">${options[i]}</h3>
+                        <h3 id="db_result_title_${i}" class="px-3 db_results">${options[i]}</h3>
+                        <div class = 'list-group'>`;
+        for(let j=0;j<dbs[i].length;j++){
+            results += `<a class="list-group-item list-group-item-action">${dbs[i][j].name}</a>`;
+        }
+        results+=`</div></div>`;
+    }
+    return results;
+}
+
+function make_big_list(options,dbs){
+    let results=`<div class = 'list-group w-75 align-items-center mx-auto'>`;
+    for(let i=0;i<options.length;i++){
+
+        for(let j=0;j<dbs[i].length;j++){
+            results += `<a href ='#' class="list-group-item list-group-item-action">
+                            <h3>${dbs[i][j].name}</h3>
+                        </a>`;
+        }
+    }
+    results+=`</div>`;
+    return results;
+}
+
+function make_images(options){
+    let results = ``;
+    for(let i=0;i<options.length;i++){
+        results+=`<div class="col-md text-center">
+                        <h3 id="db_result_title_${i}" class="px-3 db_results">${options[i]}</h3>
                         <img class="img-fluid px-2" src="../images/${options[i].split(' ').join('_')}.png">
                     </div>`;
     }
+    return results;
+}
+
+let make_result_card = function(index,options,dbs){
+    let head_html =  `<div id="item${index}" class="carousel-item w-100" >
+                        <div class="mx-auto w-75 mt-2 mb-5">`;
+    let results = `<div class="row my-4">`;
+    results = results+ make_lists(options,dbs);
     results+=`</div>`;
 
-    let options_html = "<h3 class='text-center'>¿Su base de datos actual se encuentra entre las opciones recomendadas?</h3>" +
+    let options_html = "<h3 class='text-center'>¿Su base de datos actual se encuentra entre las opciones mostradas?</h3>" +
         "<div class='mx-auto text-center'>" +
         "<form id='pathData' method='post' action='/results'>" +
         "<input id='opc_db' name='opc_db' type='hidden' value=''>" +
