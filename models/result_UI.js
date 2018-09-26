@@ -45,7 +45,7 @@ class DbGroup {
     }
 
     model_build(){
-        this._db_array = db_data.findDBs(this._db_group);
+        this._db_array = db_data.quickFindDBs(this._db_group);
     }
 
     new_build(){

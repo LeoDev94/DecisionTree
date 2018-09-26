@@ -127,20 +127,12 @@ const db_prices = {
     "Hazelcast": 219.52
 };
 
-const database_types =[
-    "SQL",
-    "SQL In Memory",
-    "NoSQL Document",
-    "NoSQL Column In Memory",
-    "NoSQL Column Store",
-    "NoSQL GraphDB",
-    "NoSQL Key Value"
-];
 
 
 //---------------------------------------------------------------------------------------------------
 
 const all_dbs = [
+    //0
     {
         name: "Oracle",
         price: 546.40,
@@ -150,6 +142,7 @@ const all_dbs = [
         web: "https://www.oracle.com/database/technologies/index.html",
         group : [1],
     },
+    //1
     {
         name: "Microsoft SQL Server",
         price: 606.88,
@@ -160,6 +153,7 @@ const all_dbs = [
         web: "https://www.microsoft.com/es-es/sql-server/sql-server-2017",
         group : [1],
     },
+    //2
     {
         name: "MySQL",
         price: 431.92,
@@ -170,6 +164,7 @@ const all_dbs = [
         web: "https://www.mysql.com/products/enterprise/",
         group : [1],
     },
+    //3
     {
         name: "Oracle In Memory",
         price: "Personalizado",
@@ -181,6 +176,7 @@ const all_dbs = [
         web: "https://www.oracle.com/database/technologies/in-memory.html",
         group : [2],
     },
+    //4
     {
         name: "VoltDB",
         price: 460.00,
@@ -191,6 +187,7 @@ const all_dbs = [
         web: "https://www.voltdb.com/product/",
         group : [2],
     },
+    //5
     {
         name: "SAP Hana",
         price: 2030.32,
@@ -201,6 +198,7 @@ const all_dbs = [
         web: "https://www.sap.com/latinamerica/products/hana.html",
         group : [2],
     },
+    //6
     {
         name: "MongoDB",
         price: 123.04,
@@ -209,6 +207,7 @@ const all_dbs = [
         web: "https://www.mongodb.com/products/mongodb-enterprise-advanced?jmp=homepage",
         group : [3],
     },
+    //7
     {
         name: "CouchDB",
         price: 148.24,
@@ -219,6 +218,7 @@ const all_dbs = [
         web: "http://couchdb.apache.org/",
         group : [3],
     },
+    //8
     {
         name: "CouchBase",
         price: 532.00,
@@ -229,6 +229,7 @@ const all_dbs = [
         web: "https://www.couchbase.com/products/data-platform",
         group : [3],
     },
+    //9
     {
         name: "HBase",
         price: "Personalizado",
@@ -238,6 +239,7 @@ const all_dbs = [
         web: "https://hbase.apache.org/",
         group : [4,5],
     },
+    //10
     {
         name: "Cassandra",
         price: "Personalizado",
@@ -249,6 +251,7 @@ const all_dbs = [
         web: "http://cassandra.apache.org/",
         group : [4,5],
     },
+    //11
     {
         name: "MonetDB",
         price: 388.00,
@@ -260,6 +263,7 @@ const all_dbs = [
         web: "https://www.monetdb.org/Home",
         group : [4],
     },
+    //12
     {
         name: "MariaDB Column Store",
         price: 166.96,
@@ -272,6 +276,7 @@ const all_dbs = [
         web: "https://mariadb.com/kb/en/library/mariadb-columnstore/",
         group : [5],
     },
+    //13
     {
         name: "Neo4j",
         price: 316.00,
@@ -284,6 +289,7 @@ const all_dbs = [
         web: "https://neo4j.com/",
         group : [6],
     },
+    //14
     {
         name: "Datasax Enterprise GraphDB",
         price: "Personalizado",
@@ -293,6 +299,7 @@ const all_dbs = [
         web: "https://www.datastax.com/products/datastax-enterprise-graph",
         group : [6],
     },
+    //15
     {
         name: "OrientDB",
         price: 1532.80,
@@ -303,6 +310,7 @@ const all_dbs = [
         web: "https://orientdb.com",
         group : [6],
     },
+    //16
     {
         name: "Redis",
         price: 187.84,
@@ -314,6 +322,7 @@ const all_dbs = [
         web: "https://redis.io/",
         group : [7],
     },
+    //17
     {
         name: "Memcached",
         price: 148.24,
@@ -324,6 +333,7 @@ const all_dbs = [
         web: "https://memcached.org/",
         group : [7],
     },
+    //18
     {
         name: "Hazelcast",
         price: 219.52,
@@ -343,32 +353,50 @@ const all_db_types = [
     {
         name: "SQL",
         group: 1,
+        databases: [all_dbs[0],all_dbs[1],all_dbs[2]],
     },
     {
         name: "SQL In Memory",
         group: 2,
+        databases: [all_dbs[3],all_dbs[4],all_dbs[5]],
     },
     {
         name: "NoSQL Document",
         group: 3,
+        databases: [all_dbs[6],all_dbs[7],all_dbs[8]],
     },
     {
         name: "NoSQL Column In Memory",
         group: 4,
+        databases: [all_dbs[9],all_dbs[10],all_dbs[11]],
     },
     {
         name: "NoSQL Column Store",
         group: 5,
+        databases: [all_dbs[9],all_dbs[10],all_dbs[12]],
     },
     {
         name: "NoSQL GraphDB",
         group: 6,
+        databases: [all_dbs[13],all_dbs[14],all_dbs[15]],
     },
     {
         name: "NoSQL Key Value",
         group: 7,
+        databases: [all_dbs[16],all_dbs[17],all_dbs[18]],
     }
 ];
+
+function quickFindDBs(group_name){
+    let dbs = [];
+    for(let i=0;i<all_db_types.length;i++){
+        if(all_db_types[i].name === group_name){
+            dbs = all_db_types[i].databases;
+            break;
+        }
+    }
+    return dbs;
+}
 
 function findDBs(group_name){
     let dbs = [];
@@ -401,4 +429,4 @@ const answer_database = {
 };
 
 
-module.exports = {db_sites,db_info,db_prices,answer_database,findDBs};
+module.exports = {db_sites,db_info,db_prices,answer_database,findDBs,quickFindDBs};
