@@ -4,13 +4,16 @@ extends layout_v2.pug
 block primary
     div.container-fluid.my-lg-5
         div.row.my-4
-            div.col
-                h3 Recomendaciones de Bases de Datos
+            div.col.text-center
+                h3.text-danger.font-weight-bold Recomendaciones de Bases de Datos
+                div.bg-danger.mx-auto(style='height: 5px;width: 200px')
         div.row.my-lg-5
             div.col-lg-11.mx-auto
                 div.tab(role="tabpanel")
-                    ul.nav.nav-tabs(role="tablist")
+                    ul.nav.nav-tabs.nav-justified(role="tablist")
                         each item,ind in db_groups
+                            if ind!=0
+                                div.bg-danger(style="width:3px;")
                             li.nav-item
                                 a.nav-link(data-toggle="tab",role="tab",href="#group_"+ind,class = ind===0?"active":"",aria-selected=ind===0?"true":"false")
                                     h3 #{item.db_group}
@@ -18,23 +21,28 @@ block primary
                         each item,ind_item in db_groups
                             div.tab-pane.fade(class = ind_item===0?"active show":"",id="group_"+ind_item,role="tabpanel")
                                 div.row
-                                    div.col-md-3
-                                        - var imgUri = item.imgUri;
-                                        img.img-fluid(src = '/' + imgUri).py-2
-                                    div.col-md-9
-                                        div.nav.nav-pills.flex-column.flex-sm-row.mb-2(role = "tablist")
-                                            each db, index in item.db_array
-                                                a.flex-sm-fill.text-sm-center.nav-link.tab-name(href="#db_" + ind_item + "_" + index,data-toggle="tab",role="tab",class = index === 0 ? "active" : "") #{db.name}
-                                        div.row.bg-dark(style={height: "2px"})
-                                        div.tab-content
-                                            each db, index in item.db_array
-                                                div.row.tab-pane.fade(id ="db_" + ind_item + "_" + index,class = index === 0 ? "active show":"")
-                                                    div.row
-                                                        div.col-md-9.my-2
-                                                            h3 #{db.name}
-                                                            p #{db.info}
-                                                            a(href=db.web) Más Información
-                                                        div.col-md-3.my-2
-                                                            h5 Precio por mes ($)
-                                                            - var dec_price = db.price ==="Personalizado"?db.price:parseFloat(Math.round(db.price * 100) / 100).toFixed(2);
-                                                            h5 #{dec_price}
+                                    div.row.mx-auto
+                                        div.col.text-center
+                                            - var imgUri = item.imgUri;
+                                            img.img-fluid.text-center(src = '/' + imgUri).py-2
+                                    div.row.mt-3
+                                        div.card.text-center.shadow
+                                            div.card-header
+                                                div.nav.nav-pills.card-header-pills.flex-column.flex-sm-row.mb-2.nav-justified(role = "tablist")
+                                                    each db, index in item.db_array
+                                                        if index != 0
+                                                            div.bg-danger(style="width:3px;")
+                                                        a.flex-sm-fill.text-sm-center.nav-link.tab-name(href="#db_" + ind_item + "_" + index,data-toggle="tab",role="tab",class = index === 0 ? "active" : "")
+                                                            h4.font-weight-bold #{db.name}
+                                                div.tab-content
+                                                    each db, index in item.db_array
+                                                        div.row.tab-pane.fade.my-5(id ="db_" + ind_item + "_" + index,class = index === 0 ? "active show":"")
+                                                            div.row
+                                                                div.col-md-9.my-2
+                                                                    p.text-left.ml-5 #{db.info}
+                                                                    h5.text-center
+                                                                        a(href=db.web) Saber más
+                                                                div.col-md-3.my-2
+                                                                    h4.text-danger Precio por mes ($)
+                                                                    - var dec_price = db.price ==="Personalizado"?db.price:parseFloat(Math.round(db.price * 100) / 100).toFixed(2);
+                                                                    h4.text-danger #{dec_price}

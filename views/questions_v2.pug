@@ -2,22 +2,25 @@ extends layout_v2.pug
 
 
 block primary
-    div.card.w-75.mx-auto.shadow-sm.py-0.mt-5.mb-5.rounded
-        h3#numPregunta.card-header.ml-3.mb-2.shadow-lg.rounded.pb-4.pt-4(style='margin-top: -20px;background: linear-gradient(60deg,#ef5350,#d32f2f)') Pregunta
-        div.card-body
+    div.row.w-100.my-5
+        div.col.text-center
+            h2#numPregunta.text-danger.font-weight-bold Pregunta
+            div.bg-danger.mx-auto(style='height: 5px;width: 50px')
+    div.row.w-100.mx-auto.my-xl-5
+        div.col-lg-10.mx-auto.container-fluid
             div#carouselIndicators.carousel.slide(style='margin-bottom: -30px;padding-bottom: 30px', data-interval='false', data-wrap='false', data-ride='carousel')
                 ol.carousel-indicators
                     each item, ind in path_UI
-                        li(id = "ind"+ind).indicador(data-target='#carouselIndicators', data-slide-to=""+ind)
+                        li(id = "ind" + ind).indicador(data-target='#carouselIndicators', data-slide-to="" + ind)
                 div.carousel-inner
                     each item,index in path_UI
-                        div(id = "item"+index).carousel-item.w-100(class = index ===0?"active":"")
+                        div(id = "item" + index).carousel-item.w-100(class = index === 0 ? "active" : "")
                             div.mx-auto.w-75.mt-2.mb-5
-                                h2.titulo_pregunta0.text-center.card-title.mb-4 #{item.question}
+                                h3.titulo_pregunta0.text-center.card-title.mb-4 #{item.question}
                                 div#options.mx-auto.text-center.row
                                     each opt,index in item.options
                                         div.col-md
-                                            button(id = "b-"+index,type='button').w-75.opciones.mx-3.opcion1.btn-danger.btn-lg.opcion-select #{opt}
+                                            button(id = "b-" + index,type='button').w-75.opciones.mx-3.opcion1.btn-danger.btn-lg.opcion-select #{opt}
                 a#c_previous.carousel-control-prev(href='#carouselIndicators', role='button', data-slide='prev')
                     span.carousel-control-prev-icon(aria-hidden='true')
                     span.sr-only Previous
