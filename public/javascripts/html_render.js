@@ -2,7 +2,9 @@
 let make_card = function(index,question,options,examples){
     let head_html =  `<div id="item${index}" class="carousel-item w-100" >
                         <div class="mx-auto w-75 mt-2 mb-5">
-                            <h2 class="titulo_pregunta${index+1} text-center card-title mb-4">${question}</h2>`;
+                            <div class="row">
+                            <h2 class="titulo_pregunta${index+1} text-center card-title mb-4 mx-auto">${question}</h2>
+                            </div>`;
     let examples_html = ``;
     if(examples!= null){
         examples_html+=`<div class="row my-lg-3">`;
@@ -27,11 +29,11 @@ let make_card = function(index,question,options,examples){
     let options_html = `<div id="options${index}" class="mx-auto text-center row">`;
     for(let i=0; i<options.length;i++){
         options_html +=`<div class="col-md">
-                            <button id="${index*2+1}" type="button" class="mx-3 w-50 opciones opcion${index*2+1} btn-danger btn-lg opcion-select">${options[i]}</button>
+                            <button id="${index*2+1}" type="button" class="mx-3 w-50 opciones opcion${index*2+1} btn-danger btn-lg opcion-select"><h5 class="text-white text-center">${options[i]}</h5></button>
                         </div>`;
     }
-
-    let footer_html =`</div></div></div>`;
+    options_html+=`</div>`;
+    let footer_html =`</div></div>`;
 
     return head_html+examples_html+options_html+footer_html;
 };

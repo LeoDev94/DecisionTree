@@ -4,7 +4,7 @@ $(document).ready(function() {
     let finished_slide = true;
     let finished_path = false;
     let path_length = 1;
-
+    let hasclicked = false;
     let mySVGsToInject = document.querySelectorAll('.iconic-sprite');
 
     // Do the injection
@@ -17,8 +17,10 @@ $(document).ready(function() {
     let body_handle = $('body');
     let num_pregunta = $('#numPregunta');
 
-    let btn_size=$('#b-2').height();
-    $('.opciones').height(btn_size);
+    let height_b = $('#b-2').height();
+    let width_b = $('#b-0').width();
+    $('.opciones').height(height_b*1);
+    $('.opciones').width(width_b*1);
 
     indicators.carousel(index);
     num_pregunta.html(`Pregunta ${index+1}`);
@@ -70,23 +72,30 @@ $(document).ready(function() {
 
 
     body_handle.on('click','button.opciones',function (e) {
+
         let obj ={index:index,question:current_question,answer: e.target.textContent};
         finished_path = false;
         //console.log(obj);
-       $.post("/quiz/answer",obj,function (data,status) {
-           console.log(status,data);
+        if(!hasclicked){
+            hasclicked = true;
+           $.post("/quiz/answer",obj,function (data,status) {
+               console.log(status,data);
+               if(status === "success"){
+                   for(let i=index*1+1.0;i<path_length;i++){
+                       $('div').remove(`#item${i}`);
+                       $('li').remove(`#ind${i}`);
+                   }
+                   index++;
+                   num_pregunta.html(`Pregunta ${index+1}`);
+                   process_data(data);
+                   check_finished();
+               }else{
+                   console.log("Ajax, Error")
+               }
 
-           for(let i=index*1+1.0;i<path_length;i++){
-               $('div').remove(`#item${i}`);
-               $('li').remove(`#ind${i}`);
-           }
-           index++;
-           num_pregunta.html(`Pregunta ${index+1}`);
-           process_data(data);
-           check_finished();
-
-       });
-
+           });
+        }
+        hasclicked = false;
     });
 
     body_handle.on('click','button.btn-final',function (e) {
