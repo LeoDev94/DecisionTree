@@ -15,12 +15,14 @@ block primary
                 div.carousel-inner
                     each item,index in path_UI
                         div(id = "item" + index).carousel-item.w-100(class = index === 0 ? "active" : "")
-                            div.mx-auto.w-75.mt-2.mb-5
-                                h3.titulo_pregunta0.text-center.card-title.mb-4 #{item.question}
-                                div#options.mx-auto.text-center.row
+                            div.mx-auto.w-75.mt-2.mb-5.row#item0
+                                div.row.mx-auto
+                                    h2.titulo_pregunta0.text-center.card-title.mb-4 #{item.question}
+                                div#options.mx-auto.text-center.row.px-4
                                     each opt,index in item.options
                                         div.col-md
-                                            button(id = "b-" + index,type='button').w-75.opciones.mx-3.opcion1.btn-danger.btn-lg.opcion-select #{opt}
+                                            button.btn-lg(id = "b-" + index,type='button').opciones.mx-3.opcion1.btn-danger.opcion-select
+                                                h5.text-white.text-center #{opt}
                 a#c_previous.carousel-control-prev(href='#carouselIndicators', role='button', data-slide='prev')
                     span.carousel-control-prev-icon(aria-hidden='true')
                     span.sr-only Previous
