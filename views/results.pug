@@ -30,6 +30,8 @@ block primary
                                             div.card-header
                                                 div.nav.nav-pills.card-header-pills.flex-column.flex-sm-row.mb-2.nav-justified(role = "tablist")
                                                     each db, index in item.db_array
+                                                        if index != 0
+                                                            div.bg-danger(style="width:3px;")
                                                         a.flex-sm-fill.text-sm-center.nav-link.tab-name(href="#db_" + ind_item + "_" + index,data-toggle="tab",role="tab",class = index === 0 ? "active" : "")
                                                             h4.font-weight-bold #{db.name}
                                                 div.tab-content
@@ -41,6 +43,6 @@ block primary
                                                                     h5.text-center
                                                                         a(href=db.web) Saber más
                                                                 div.col-md-3.my-2
-                                                                    h5 Precio por mes ($)
+                                                                    h4.text-danger Precio por mes ($)
                                                                     - var dec_price = db.price ==="Personalizado"?db.price:parseFloat(Math.round(db.price * 100) / 100).toFixed(2);
-                                                                    h5 #{dec_price}
+                                                                    h4.text-danger #{dec_price}
