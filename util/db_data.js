@@ -1,3 +1,5 @@
+const answers_data = require('../util/answers_data');
+
 const db_sites={
     "Oracle": "https://www.oracle.com/database/technologies/index.html",
     "Microsoft SQL Server": "https://www.microsoft.com/es-es/sql-server/sql-server-2017",
@@ -267,14 +269,14 @@ const all_dbs = [
     {
         name: "MariaDB Column Store",
         price: 166.96,
-        info: "MariaDB ColumnStore está diseñado para escala de big data para procesar petabytes de datos," +
-        "escalabilidad lineal y rendimiento excepcional con respuesta en tiempo real " +
-        "a las consultas analíticas. Aprovecha los beneficios de I/O del almacenamiento en" +
-        " columnas, la compresión," +
-        "proyección justo a tiempo y particionamiento horizontal y vertical para" +
-        " ofrecer un rendimiento tremendo al analizar grandes conjuntos de datos.",
-        web: "https://mariadb.com/kb/en/library/mariadb-columnstore/",
-        group : [5],
+        info: "MariaDB ColumnStore es un motor de almacenamiento optimizado para cargas de trabajo" +
+            " analíticas modernas: distribuido y con procesamiento de consultas paralelas para una" +
+            " mayor escalabilidad y almacenamiento en columnas para una mayor eficiencia y rendimiento" +
+            " de consultas. MariaDB AX amplía el servidor MariaDB con MariaDB ColumnStore," +
+            " adaptadores de datos y herramientas para crear una solución empresarial de código abierto" +
+            " para análisis y almacenamiento de datos modernos",
+        web: "https://mariadb.com/products/technology/columnstore",
+        group : [5,4],
     },
     //13
     {
@@ -291,13 +293,13 @@ const all_dbs = [
     },
     //14
     {
-        name: "Datasax Enterprise GraphDB",
+        name: "Datasax Enterprise",
         price: "Personalizado",
-        info: "DSE Graph es un complemento de DSE que permite a las empresas identificar y analizar "+
-        "relaciones ocultas entre datos conectados para crear aplicaciones potentes" +
-        "para detección de fraude, cliente 360, redes sociales y recomendaciones en tiempo real",
-        web: "https://www.datastax.com/products/datastax-enterprise-graph",
-        group : [6],
+        info: "Datastax Enterprise presenta soluciones tecnológicas en lo que respecta al almacenamiento de datos," +
+            " como sus soluciones con mayor categorización esta datastax column store y graph database" +
+            ", esto lo hace en una base de datos multi modelo .",
+        web: "https://www.datastax.com/products/datastax-enterprise",
+        group : [5,6,4],
     },
     //15
     {
@@ -308,7 +310,7 @@ const all_dbs = [
         "múltiples sistemas para manejar otros tipos de datos, lo que aumenta" +
         " el rendimiento y la seguridad a la vez que admite la escalabilidad",
         web: "https://orientdb.com",
-        group : [6],
+        group : [6,3,7],
     },
     //16
     {
@@ -344,6 +346,251 @@ const all_dbs = [
         " de datos intensivos operen a velocidades cercanas al real.",
         web: "https://hazelcast.com/",
         group : [7],
+    },//19
+    {
+        name: "PostgreSQL",
+        price: 172.08,
+        info: "PostgreSQL es un potente sistema de base de datos relacional de objetos de código abierto con más de 30" +
+            " años de desarrollo activo que le ha valido una sólida reputación de fiabilidad, robustez" +
+            " de las características y rendimiento.\n" +
+            "Hay una gran cantidad de información que se encuentra describiendo cómo instalar y usar PostgreSQL a" +
+            " través de la documentación oficial. La comunidad de PostgreSQL brinda muchos lugares útiles para" +
+            " familiarizarse con la tecnología, descubrir cómo funciona y encontrar oportunidades profesionales.",
+        web :"https://www.postgresql.org/",
+        group: [1],
+    },//20
+    {
+        name: "DB2",
+        price: "Personalizado",
+        info: "DB2 es una familia de productos de sistema de gestión de bases de datos relacionales (RDBMS) de IBM" +
+            " que sirven a varias plataformas diferentes de sistemas operativos. Según IBM, DB2 lidera en términos " +
+            "de participación y rendimiento en el mercado de bases de datos. Aunque los productos DB2 se ofrecen" +
+            " para sistemas basados en UNIX y sistemas operativos de computadoras personales, DB2 sigue a" +
+            " productos de base de datos de Oracle en sistemas basados en UNIX " +
+            "y a Access de Microsoft en sistemas Windows.",
+        web :"https://www.ibm.com/analytics/pe/es/technology/db2/",
+        group: [1],
+    },//21
+    {
+        name: "Microsoft Access",
+        price: "",
+        info: "",
+        web :"",
+        group: [1],
+    },//22
+    {
+        name: "SQLite",
+        price: "",
+        info: "",
+        web :"",
+        group: [1],
+    },//23
+    {
+        name: "Teradata",
+        price: "",
+        info: "",
+        web :"",
+        group: [1],
+    },//24
+    {
+        name: "MariaDB",
+        price: "",
+        info: "",
+        web :"",
+        group: [1],
+    },//25
+    {
+        name: "Hive",
+        price: "",
+        info: "",
+        web :"",
+        group: [1],
+    },//26
+    {
+        name: "MySQL in Memory",
+        price: 820.00,
+        info: "Muchas de las organizaciones más grandes y de más rápido crecimiento del mundo, incluidas Facebook," +
+            " Google, Adobe, Alcatel Lucent y Zappos, confían en MySQL para ahorrar tiempo y dinero en sus" +
+            " sitios web de gran volumen, sistemas críticos para el negocio y software empaquetado.",
+        web :"https://www.mysql.com/",
+        group: [2],
+    },//27
+    {
+        name: "Aerospike",
+        price: 1007.28,
+        info: "Aerospike está diseñado para ser la principal base de datos NoSQL de alta velocidad," +
+            " escalable y confiable. Cada línea de código de Aerospike, cada decisión arquitectónica se enfoca " +
+            "en alto rendimiento y escalas y operaciones fáciles: flash optimizado · índices en RAM ·" +
+            " modelos de transacción enhebrados · evitando copias · transacción de optimización de línea" +
+            " de caché y replicación de datos · escalado automático de reequilibrio automático ",
+        web :"https://www.aerospike.com/",
+        group: [2,7],
+    },//28
+    {
+        name: "SQL Server",
+        price: "",
+        info: "",
+        web :"",
+        group: [2],
+    },//29
+    {
+        name: "IBM Dash DB",
+        price: "",
+        info: "",
+        web :"",
+        group: [2],
+    },//30
+    {
+        name: "DB2 Blu",
+        price: "",
+        info: "",
+        web :"",
+        group: [2],
+    },//31
+    {
+        name: "Amazon Dynamo DB",
+        price: 118.80,
+        info: "Es una base de datos no relacional que ofrece rendimiento fiable a cualquier escala." +
+            " Es una base de datos completamente administrada, con varios nodos principales y distribuida" +
+            " en varias regiones que ofrece una latencia estable con milisegundos de un dígito y" +
+            " almacenamiento caché en memoria, copias de seguridad y restauración, y seguridad incorporada.",
+        web :"https://aws.amazon.com/es/dynamodb/",
+        group: [3,7],
+    },//32
+    {
+        name: "Microsoft Azure Cosmos DB",
+        price: 83.77,
+        info: "Azure Cosmos DB se construyó desde cero con una distribución global y una escala horizontal" +
+            " en su núcleo. Ofrece una distribución global llave en mano en cualquier número de regiones " +
+            "de Azure al escalar y replicar sus datos de forma transparente dondequiera que estén sus usuarios." +
+            " Escale elásticamente sus escrituras y lecturas en todo el mundo, y pague solo por lo que necesita.",
+        web :"https://azure.microsoft.com/es-es/services/cosmos-db/",
+        group: [3,4,6,7],
+    },//33
+    {
+        name: "Marklogic",
+        price: "",
+        info: "",
+        web :"",
+        group: [3],
+    },//34
+    {
+        name: "Firebase Realtime Database",
+        price: "",
+        info: "",
+        web :"",
+        group: [3],
+    },//35
+    {
+        name: "RethinkDB",
+        price: "",
+        info: "",
+        web :"",
+        group: [3],
+    },//36
+    {
+        name: "ArangoDB",
+        price: 60.48,
+        info: "Arango DB es una base de datos de modelos múltiples, ArangoDB está diseñado como una base de" +
+            " datos nativa de modelos múltiples, que admite modelos clave / de valor, documentos y gráficos." +
+            " Esto significa que puede modelar sus datos y aplicaciones de una manera muy flexible y admitir" +
+            " una gran cantidad de casos de uso con ArangoDB.",
+        web :"https://www.arangodb.com/",
+        group: [3,6,7],
+    },//37
+    {
+        name: "Accumulo",
+        price: "Personalizado",
+        info: "Con Apache Accumulo, los usuarios pueden almacenar y administrar grandes conjuntos de datos" +
+            " en un clúster. Accumulo utiliza el HDFS de Apache Hadoop para almacenar sus datos y" +
+            " Apache ZooKeeper para obtener un consenso. Mientras muchos usuarios interactúan directamente " +
+            "con Accumulo, varios proyectos de código abierto usan Accumulo como su tienda subyacente.",
+        web :"https://accumulo.apache.org/",
+        group: [4,5],
+    },//38
+    {
+        name: "Microsoft Azure Table Storage",
+        price: "",
+        info: "",
+        web :"",
+        group: [5],
+    },//39
+    {
+        name: "Google Cloud Bigtable",
+        price: "",
+        info: "",
+        web :"",
+        group: [5],
+    },//40
+    {
+        name: "ScyllaDB",
+        price: "",
+        info: "",
+        web :"",
+        group: [5],
+    },//41
+    {
+        name: "MapR-DB",
+        price: "",
+        info: "",
+        web :"",
+        group: [5],
+    },//42
+    {
+        name: "Sqrll",
+        price: "",
+        info: "",
+        web :"",
+        group: [5],
+    },//43
+    {
+        name: "Virtuoso",
+        price: "",
+        info: "",
+        web :"",
+        group: [6],
+    },//44
+    {
+        name: "Amazon Neptune",
+        price: "",
+        info: "",
+        web :"",
+        group: [6],
+    },//45
+    {
+        name: "Giraph",
+        price: "",
+        info: "",
+        web :"",
+        group: [6],
+    },//46
+    {
+        name: "JanusGraph",
+        price: "",
+        info: "",
+        web :"",
+        group: [6],
+    },//47
+    {
+        name: "GraphDB",
+        price: "",
+        info: "",
+        web :"",
+        group: [6],
+    },//48
+    {
+        name: "RiakKV",
+        price: "",
+        info: "",
+        web :"",
+        group: [7],
+    },//49
+    {
+        name: "Ehcache",
+        price: "",
+        info: "",
+        web :"",
+        group: [7],
     }
 ];
 //-----------------------------------------------------------------------------------------------
@@ -351,39 +598,39 @@ const all_dbs = [
 
 const all_db_types = [
     {
-        name: "SQL",
+        name: answers_data.answers[0],
         group: 1,
-        databases: [all_dbs[0],all_dbs[1],all_dbs[2]],
+        databases: [all_dbs[0],all_dbs[1],all_dbs[2],all_dbs[19],all_dbs[20]],
     },
     {
-        name: "SQL In Memory",
+        name: answers_data.answers[1],
         group: 2,
-        databases: [all_dbs[3],all_dbs[4],all_dbs[5]],
+        databases: [all_dbs[3],all_dbs[4],all_dbs[5],all_dbs[26],all_dbs[27]],
     },
     {
-        name: "NoSQL Document",
+        name: answers_data.answers[2],
         group: 3,
-        databases: [all_dbs[6],all_dbs[7],all_dbs[8]],
+        databases: [all_dbs[6],all_dbs[7],all_dbs[8],all_dbs[31],all_dbs[32]],
     },
     {
-        name: "NoSQL Column In Memory",
+        name: answers_data.answers[4],
         group: 4,
-        databases: [all_dbs[9],all_dbs[10],all_dbs[11]],
+        databases: [all_dbs[9],all_dbs[10],all_dbs[11],all_dbs[12],all_dbs[32]],
     },
     {
-        name: "NoSQL Column Store",
+        name: answers_data.answers[5],
         group: 5,
-        databases: [all_dbs[9],all_dbs[10],all_dbs[12]],
+        databases: [all_dbs[9],all_dbs[10],all_dbs[12],all_dbs[37],all_dbs[14]],
     },
     {
-        name: "NoSQL GraphDB",
+        name: answers_data.answers[6],
         group: 6,
-        databases: [all_dbs[13],all_dbs[14],all_dbs[15]],
+        databases: [all_dbs[13],all_dbs[14],all_dbs[15],all_dbs[32],all_dbs[36]],
     },
     {
-        name: "NoSQL Key Value",
+        name: answers_data.answers[7],
         group: 7,
-        databases: [all_dbs[16],all_dbs[17],all_dbs[18]],
+        databases: [all_dbs[16],all_dbs[17],all_dbs[18],all_dbs[31],all_dbs[32]],
     }
 ];
 

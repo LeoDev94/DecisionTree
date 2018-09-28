@@ -1,5 +1,5 @@
 let db_data = require('../util/db_data');
-
+let asnwers_data = require('../util/answers_data');
 class DbInfo {
     constructor(name){
         this._name=name;
@@ -89,23 +89,14 @@ class DBGroupArray{
         this.Build_Array_v2(lastNode);
     }
 
-    Build_Array(lastNode){
-        for(let i =0;i<lastNode._final_options.length;i++){
-            let imgUri="../images/";
-            imgUri += lastNode._final_options[i].split(' ').join('_');
-            imgUri+=".png";
-            this.Add(lastNode._final_options[i],i,imgUri);
-        }
-    }
-
     Build_Array_v2(lastNode){
         for(let i =0;i<lastNode.options.length;i++){
-            let imgUri="../images/";
-            imgUri += lastNode.options[i].split(' ').join('_');
-            imgUri+=".png";
+            let imgUri = asnwers_data.findImg(lastNode.options[i]);
             this.Add(lastNode.options[i],i,imgUri);
         }
     }
+
+
 
     Add(db_group,index,imgUri){
         this._db_groupArray.push(new DbGroup(db_group,index,imgUri))

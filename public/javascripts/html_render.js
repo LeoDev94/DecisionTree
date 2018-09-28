@@ -7,6 +7,9 @@ let make_card = function(index,question,options,examples){
     if(examples!= null){
         examples_html+=`<div class="row my-lg-3">`;
         for(let i=0;i<examples.length;i++){
+            if(i*1!==0){
+                examples_html+=`<div class="bg-danger" style="width: 3px"></div>`;
+            }
             examples_html+=`<div class="col-md">
                             <h5 class="text-center">${examples[i].title}</h5>
                             <ul class="${examples.length>1?"":"text-center row"}" style="list-style-position: initial">`;
