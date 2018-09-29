@@ -50,7 +50,7 @@ function make_lists(options,dbs){
     for(let i=0;i<options.length;i++){
         results+=`<div class="col-md text-center">
                         <h3 id="db_result_title_${i}" class="px-3 db_results">${options[i]}</h3>
-                        <div class = 'list-group'>`;
+                        <div class = 'list-group custom-scroll'>`;
         for(let j=0;j<dbs[i].length;j++){
             results += `<a class="list-group-item list-group-item-action">${dbs[i][j].name}</a>`;
         }
