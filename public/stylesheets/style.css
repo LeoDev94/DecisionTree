@@ -43,6 +43,10 @@ body, html{
 .btn-lg {
   cursor: pointer
 }
+
+.card-style {
+  width: 90% !important;
+}
 /*
 a:hover, a:focus{
   text-decoration: none;

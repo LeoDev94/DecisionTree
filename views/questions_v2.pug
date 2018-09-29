@@ -1,6 +1,5 @@
 extends layout_v2.pug
 
-
 block primary
     div.row.w-100.my-5
         div.col.text-center
@@ -16,13 +15,13 @@ block primary
                     each item,index in path_UI
                         div(id = "item" + index).carousel-item.w-100(class = index === 0 ? "active" : "")
                             div.mx-auto.w-75.mt-2.mb-5.row#item0
-                                div.row.mx-auto
-                                    h2.titulo_pregunta0.text-center.card-title.mb-4 #{item.question}
-                                div#options.mx-auto.text-center.row.px-4
+                                div.row.w-100
+                                    h2.w-100.titulo_pregunta0.text-center.card-title.mb-4 #{item.question}
+                                div#options.w-100.text-center.row.px-4
                                     each opt,index in item.options
                                         div.col-md
                                             button.btn-lg(id = "b-" + index,type='button').opciones.mx-3.opcion1.btn-danger.opcion-select
-                                                h5.text-white.text-center #{opt}
+                                                h5.text-white.text-center.m-0 #{opt}
                 a#c_previous.carousel-control-prev(href='#carouselIndicators', role='button', data-slide='prev')
                     span.carousel-control-prev-icon(aria-hidden='true')
                     span.sr-only Previous

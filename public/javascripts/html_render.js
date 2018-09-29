@@ -1,35 +1,42 @@
+function make_examples(examples){
+    let examples_html = ``;
+    examples_html+=`<div class="row my-lg-3">`;
+    for(let i=0;i<examples.length;i++){
+        if(i*1!==0){
+            examples_html+=`<div class="bg-danger" style="width: 3px"></div>`;
+        }
+        examples_html+=`<div class="col-md text-center">
+                            <h5 class="text-center">${examples[i].title}</h5>
+                            <ul style="display: inline-block;text-align: left ;list-style-position: initial">`;
+            for(let j=0;j<examples[i].examples.length;j++){
+
+                examples_html+=`<div class="col-md ">
+                                    <li class=""><h6>${examples[i].examples[j]}</h6></li>
+                                    </div>`;
+
+            }
+        examples_html+=`</ul></div>`;
+    }
+
+    examples_html+=`</div>`;
+    return examples_html;
+}
+
 
 let make_card = function(index,question,options,examples){
     let head_html =  `<div id="item${index}" class="carousel-item w-100" >
                         <div class="mx-auto w-75 mt-2 mb-5">
-                            <div class="row">
-                            <h2 class="titulo_pregunta${index+1} text-center card-title mb-4 mx-auto">${question}</h2>
+                            <div class="row w-100 m-0 px-5">
+                            <h2 class="titulo_pregunta${index+1} text-center card-title mb-4 mx-auto card-style">${question}</h2>
                             </div>`;
     let examples_html = ``;
     if(examples!= null){
-        examples_html+=`<div class="row my-lg-3">`;
-        for(let i=0;i<examples.length;i++){
-            if(i*1!==0){
-                examples_html+=`<div class="bg-danger" style="width: 3px"></div>`;
-            }
-            examples_html+=`<div class="col-md">
-                            <h5 class="text-center">${examples[i].title}</h5>
-                            <ul class="${examples.length>1?"":"text-center row"}" style="list-style-position: initial">`;
-
-            for(let j=0;j<examples[i].examples.length;j++){
-                examples_html+=`<div class="col-md ${examples.length>1?"":"d-flex flex-column align-items-center"} ">
-                                <li class=""><h6>${examples[i].examples[j]}</h6></li>
-                                </div>`;
-            }
-            examples_html+=`</ul></div>`;
-        }
-
-        examples_html+=`</div>`;
+        examples_html=make_examples(examples);
     }
-    let options_html = `<div id="options${index}" class="mx-auto text-center row">`;
+    let options_html = `<div id="options${index}" class="w-100 text-center row m-0">`;
     for(let i=0; i<options.length;i++){
         options_html +=`<div class="col-md">
-                            <button id="${index*2+1}" type="button" class="mx-3 w-50 opciones opcion${index*2+1} btn-danger btn-lg opcion-select"><h5 class="text-white text-center">${options[i]}</h5></button>
+                            <button id="${index*2+1}" type="button" class="mx-3 w-50 opciones opcion${index*2+1} btn-danger btn-lg opcion-select"><h5 class="text-white text-center m-0">${options[i]}</h5></button>
                         </div>`;
     }
     options_html+=`</div>`;
@@ -84,7 +91,7 @@ let make_result_card = function(index,options,dbs){
     results = results+ make_lists(options,dbs);
     results+=`</div>`;
 
-    let options_html = "<h3 class='text-center'>¿Su base de datos actual se encuentra entre las opciones mostradas?</h3>" +
+    let options_html = "<h3 class='text-center'>¿La base de datos que utilizó en dicho proyecto se encuentra entre las opciones mostradas?</h3>" +
         "<div class='mx-auto text-center'>" +
         "<form id='pathData' method='post' action='/results'>" +
         "<input id='opc_db' name='opc_db' type='hidden' value=''>" +
