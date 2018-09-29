@@ -91,7 +91,8 @@ let question_tree = new question_node(
                         new question_node(question_data.question_text[5],yes_no,[scenario_8,scenario_9])
                     ]
                 )
-            ]
+            ],
+            question_data.all_examples[1]
         ),
         scenario_10
     ]

@@ -7,8 +7,7 @@ const question_text = [
     "¿Manejarás más del millón de registros?",                   //2
 
     "¿Consiste en encontrar patrones o relaciones de" +
-        " comportamiento? Por ejemplo: Sistema de recomendaciones o" +
-    "                Detección de fraudes",                                     //3//para cambiar
+        " comportamiento?",                                     //3//para cambiar
 
     "¿Qué tipo de consulta se realizará más?",                   //4
     "¿Necesidad de manejar información en tiempo real?"          //5
@@ -17,14 +16,14 @@ const question_text = [
 const all_examples = [
     [
         {
-            title: "Ejemplo de Información Crítica",
+            title: "Ejemplo de Información Crítica:",
             examples:[
                 "Registro de ventas en una empresa comercial",
                 "Registro de transacciones financieras en un banco"
             ],
         },
         {
-            title: "Ejemplo de Información No Crítica",
+            title: "Ejemplo de Información No Crítica:",
             examples:[
                 "Registro los estados de usuarios en una red social",
                 "Registro de los comentarios de un post",
@@ -34,7 +33,7 @@ const all_examples = [
     ],
     [
         {
-            title: "Ejemplos",
+            title: "Ejemplos:",
             examples:[
                 "Sistema de recomendaciones",
                 "Detección de fraudes"
