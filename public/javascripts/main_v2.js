@@ -18,7 +18,7 @@ $(document).ready(function() {
     let num_pregunta = $('#numPregunta');
 
     let height_b = $('#b-2').height();
-    let width_b = $('#b-0').width();
+    let width_b = $('#b-2').width();
     $('.opciones').height(height_b*1);
     $('.opciones').width(width_b*1);
 
